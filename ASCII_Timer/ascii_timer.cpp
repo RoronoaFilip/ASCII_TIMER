@@ -1,5 +1,8 @@
+#include "./PrintHours/print_hours.cpp"
+#include "./PrintNumbers/print_numbers.cpp"
 #include <iostream>
 using namespace std;
+
 int main() {
     int n; // Seconds
     cin >> n;
@@ -24,7 +27,14 @@ int main() {
             seconds = 60 + copyOfn;
         }
     }
-    cout << hours << " " << minutes << " " << seconds;
+    cout << hours << " " << minutes << " " << seconds << endl;
+
     // TODO Create a function that prints the numbers
+    int line = 1;
+    while (line != 12) {
+        printHours(hours, line);
+        ++line;
+        cout << endl;
+    }
     return 0;
 }
