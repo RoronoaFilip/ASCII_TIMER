@@ -1,3 +1,4 @@
+#pragma once
 #ifndef PRINT_NUMBERS_H
 #define PRINT_NUMBERS_H
 void print0(int num, int lineNumber, bool isItTheSecondDigit);

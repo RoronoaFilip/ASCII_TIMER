@@ -1,5 +1,5 @@
 #include "print_seconds.h"
-#include "../printNumbers/print_numbers.h"
+#include "../PrintNumbers/print_numbers.h"
 void printSeconds(const int seconds, const int lineNumber) {
     bool isItTheSecondDigit = false;
     switch (seconds / 10) {

@@ -1,13 +1,9 @@
-#include "./OtherFunctions/other_functions.cpp"
-#include "./PrintHours/print_hours.cpp"
-#include "./PrintMinutes/print_minutes.cpp"
-#include "./PrintNumbers/print_numbers.cpp"
-#include "./PrintSeconds/print_seconds.cpp"
-#ifdef _WIN32
+#include "OtherFunctions/other_functions.cpp"
+#include "PrintHours/print_hours.cpp"
+#include "PrintMinutes/print_minutes.cpp"
+#include "PrintNumbers/print_numbers.cpp"
+#include "PrintSeconds/print_seconds.cpp"
 #include <Windows.h>
-#else
-#include <unistd.h>
-#endif
 #include <iomanip>
 #include <iostream>
 using namespace std;
@@ -76,7 +72,6 @@ int main() {
         cout << endl;
         cout << endl;
         cout << endl;
-        cout << endl;
         --seconds;
         --n;
         if (seconds == -1) {
@@ -87,12 +82,7 @@ int main() {
             minutes = 59;
             --hours;
         }
-#ifdef _WIN32
         Sleep(1000);
-#else
-        sleep(1);
-#endif
-
         screenClear();
     }
     return 0;

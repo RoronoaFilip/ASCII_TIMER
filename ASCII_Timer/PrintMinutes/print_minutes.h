@@ -1,3 +1,5 @@
-#ifndef print_minutes_h
-#define print_minutes_h
+#pragma once
+#ifndef PRINT_MINUTES_H
+#define PRINT_MINUTES_H
+void printMinutes(const int minutes, const int lineNumber);
 #endif
