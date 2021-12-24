@@ -4,4 +4,5 @@
 void screenClear();
 int tensOfNumberCount(int n);
 int* transformHoursMinutesSeconds(int n);
+void printTimer(int hours, int minutes, int seconds, int n);
 #endif
