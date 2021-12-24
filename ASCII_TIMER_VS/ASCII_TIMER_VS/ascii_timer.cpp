@@ -12,28 +12,11 @@ int main() {
 	int n; // Seconds
 	cin >> n;
 	screenClear();
-	int copyOfn = n;
-	int hours = 0;
-	int minutes = 0;
-	int seconds = 0;
-	if (n < 60) {
-		seconds = n;
-	}
-	else {
-		for (int i = n; i > 0; i -= 60) {
-			if (copyOfn >= 60) {
-				++minutes;
-			}
-			copyOfn -= 60;
-			if (minutes == 60) {
-				minutes = 0;
-				++hours;
-			}
-		}
-		if (copyOfn != 0) {
-			seconds = 60 + copyOfn;
-		}
-	}
+	int* timePtr = transformHoursMinutesSeconds(n);
+	int hours = timePtr[0];
+	int minutes = timePtr[1];
+	int seconds = timePtr[2];
+
 	while (n >= 0) { // TODO Move this while other_functions
 		// TODO Color the numbers randomly
 		int line = 1;
