@@ -20,3 +20,25 @@ int tensOfNumberCount(int n) {
 	count /= 10;
 	return count;
 }
+int* transformHoursMinutesSeconds(int n) {
+	int timeArr[3] = {};
+	if (n < 60) {
+		timeArr[2] = n;
+	}
+	else {
+		for (int i = n; i > 0; i -= 60) {
+			if (n >= 60) {
+				++timeArr[1];
+			}
+			n -= 60;
+			if (timeArr[1] == 60) {
+				timeArr[1] = 0;
+				++timeArr[0];
+			}
+		}
+		if (n != 0) {
+			timeArr[2] = 60 + n;
+		}
+	}
+	return timeArr;
+}
