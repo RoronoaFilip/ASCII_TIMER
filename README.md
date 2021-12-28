@@ -1,10 +1,21 @@
 # ITP-Praktikum-Project
-**Project for Introduction to Programming from FMI Semester 1**
-# СУ „Св. Климент Охридски“, ФМИ
-#### Специалност „Софтуерно Инженерство“
-## Увод в програмирането (практикум)
-##### 2021-2022 г.
-### **Задание за курсов проект № 9 - ASCII timer**
+>**Project for Introduction to Programming from FMI Semester 1**  
+>Link to the Docs Document [here](https://docs.google.com/document/d/1TLs8k6gelVqKmfflBVkEZJ2nadfqpIbJqB-dmi3oNEw/edit)  
+
+<h1 align = "center">
+  СУ „Св. Климент Охридски“, ФМИ 
+</h1>
+<h5 align = "center">
+  Специалност „Софтуерно Инженерство“
+</h5>
+<h2 align = "center">
+  Увод в програмирането (практикум)  
+</h2>
+<p align = "center">
+  2021-2022 г.
+</p>
+  
+### Задание за курсов проект № 9 - ASCII timer
 Да се напише програма, която реализира четирицифрен таймер, размерът на цифрите на който е 11х10 символа (ASCII art).  
 
 При стартиране на програмата да се въвежда от потребителя число (брой секунди), след което таймерът започва да отброява оставащото време във формат <ЧАСОВЕ:МИНУТИ:СЕКУНДИ>.  
@@ -21,18 +32,14 @@
 * При оставащо време по-малко от 10 секунди, всички цифри да примигват.
 
 ## Пример: 
-**Визуализацията на таймера може да изглежда така:**  
+#### **Визуализацията на таймера може да изглежда така:**  
 
-hh/mm/ss - hours : minutes : seconds
+hh/mm/ss - hours : minutes : seconds  
+![Image for Hours:Minutes:Seconds](/ReadMeImages/HoursMinutesSeconds.png)
 
+mm/ss - minutes : seconds  
+![Image for Minutes:Seconds](/ReadMeImages/MinutesSeconds.png)
 
-
-mm/ss - minutes : seconds
-
-
-
-
-
-
-only seconds
+only seconds  
+![Image for Seconds](/ReadMeImages/Seconds.png)
 
