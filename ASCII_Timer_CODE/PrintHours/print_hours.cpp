@@ -1,6 +1,6 @@
-#include "print_hours.h"
-#include "../OtherFunctions/other_functions.h"
-#include "../PrintNumbers/print_numbers.h"
+#include "print_hours.hpp"
+#include "other_functions.hpp"
+#include "print_numbers.hpp"
 void printHours(int hours, int lineNumber, int tensOfNumberCount, bool isHoursLessThanTen) {
     bool isItTheSecondDigit = false;
     if (isHoursLessThanTen) {

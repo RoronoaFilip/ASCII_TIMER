@@ -1,8 +1,8 @@
-#include "OtherFunctions/other_functions.cpp"
-#include "PrintHours/print_hours.cpp"
-#include "PrintMinutes/print_minutes.cpp"
-#include "PrintNumbers/print_numbers.cpp"
-#include "PrintSeconds/print_seconds.cpp"
+#include "other_functions.hpp"
+#include "print_hours.hpp"
+#include "print_minutes.hpp"
+#include "print_numbers.hpp"
+#include "print_seconds.hpp"
 #include <Windows.h>
 #include <iomanip>
 #include <iostream>

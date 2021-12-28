@@ -1,4 +1,4 @@
-#include "other_functions.h"
+#include "other_functions.hpp"
 #include <iostream>
 using namespace std;
 void screenClear() {

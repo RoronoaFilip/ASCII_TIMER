@@ -1,4 +1,4 @@
-#include "print_numbers.h"
+#include "print_numbers.hpp"
 #include <iostream>
 using namespace std;
 void print0(int num, int lineNumber, bool isItTheSecondDigit) {
