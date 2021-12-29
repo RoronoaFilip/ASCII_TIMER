@@ -1,5 +1,4 @@
 #include "print_hours.h"
-#include "other_functions.h"
 #include "print_numbers.h"
 void printHours(int hours, int lineNumber, int tensOfNumberCount, bool isHoursLessThanTen) {
 	bool isItTheSecondDigit = false;

@@ -5,6 +5,17 @@
 #include <Windows.h>
 #include <iostream>
 using namespace std;
+void printTimer() {
+	int n; // Seconds
+	cin >> n;
+	screenClear();
+	int* timePtr = transformHoursMinutesSeconds(n);
+	int hours = timePtr[0];
+	int minutes = timePtr[1];
+	int seconds = timePtr[2];
+
+	printTimer(hours, minutes, seconds, n);
+}
 void screenClear() {
 #ifdef _WIN32
 	system("cls");
@@ -16,7 +27,7 @@ void screenClear() {
 	}
 #endif
 }
-int tensOfNumberCount(int n) {
+int tensOfNumberCount(const int n) {
 	int count = 1;
 	for (int i = n; i > 0; i /= 10) {
 		count *= 10;
@@ -46,9 +57,47 @@ int* transformHoursMinutesSeconds(int n) {
 	}
 	return timeArr;
 }
+void printEndMessage() {
+	cout << "To return to Home Screen type: 1" << endl;
+	cout << "To exit type: 0" << endl;
+}
+void whenTimerIsZero() {
+	cout << '\a';
+	screenClear();
+	cout << endl;
+	cout << endl;
+	cout << endl;
+	cout << endl;
+	cout << endl;
+	cout << endl;
+	cout << endl;
+	int r = 0;
+	int line = 1;
+	while (line != 12) {
+		for (int i = 0; i <= 7; ++i) {
+			cout << ' ';
+		}
+		printHours(0, line, 1, true);
+		printMinutes(0, line);
+		printSeconds(0, line);
+		++line;
+		cout << endl;
+	}
+	cout << endl;
+	printEndMessage();
+	cin >> r;
+	if (r == 1) {
+		screenClear();
+		printTimer();
+	}
+	if (r == 0) {
+		screenClear();
+		exit(0);
+	}
+}
 void printTimer(int hours, int minutes, int seconds, int n) {
-	while (n >= 0) { // TODO Move this while other_functions
-	// TODO Color the numbers randomly
+	while (n >= 0) {
+		//TODO do the coloring
 		int line = 1;
 		cout << endl;
 		cout << endl;
@@ -99,6 +148,9 @@ void printTimer(int hours, int minutes, int seconds, int n) {
 			--hours;
 		}
 		Sleep(1000);
+		if (n == 0) {
+			whenTimerIsZero();
+		}
 		screenClear();
 	}
 }
