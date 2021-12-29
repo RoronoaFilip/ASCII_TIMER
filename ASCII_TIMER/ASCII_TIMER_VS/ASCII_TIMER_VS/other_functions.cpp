@@ -5,7 +5,7 @@
 #include <Windows.h>
 #include <iostream>
 using namespace std;
-void printTimerAgain() {
+void printTimer() {
 	int n; // Seconds
 	cin >> n;
 	screenClear();
@@ -88,7 +88,7 @@ void whenTimerIsZero() {
 	cin >> r;
 	if (r == 1) {
 		screenClear();
-		printTimerAgain();
+		printTimer();
 	}
 	if (r == 0) {
 		screenClear();
@@ -97,7 +97,7 @@ void whenTimerIsZero() {
 }
 void printTimer(int hours, int minutes, int seconds, int n) {
 	while (n >= 0) {
-		// TODO Color the numbers randomly
+		//TODO do the coloring
 		int line = 1;
 		cout << endl;
 		cout << endl;
