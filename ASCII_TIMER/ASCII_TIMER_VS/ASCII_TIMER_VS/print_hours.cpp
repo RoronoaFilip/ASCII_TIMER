@@ -47,6 +47,6 @@ void printHours(int hours, int lineNumber, int tensOfNumberCount, bool isHoursLe
 	}
 
 	if (tensOfNumberCount / 10 != 0) {//If hours is != 0 in the next iteration
-		printHours(hours % tensOfNumberCount, lineNumber, tensOfNumberCount / 10, isHoursLessThanTen, d, a + 1);
+		printHours(hours % tensOfNumberCount, lineNumber, tensOfNumberCount / 10, isHoursLessThanTen, d, a - 1);
 	}// (the first digit of hours gets deleted | the same line number | the number of tens decreases | is hours a single digit | coloring integers)
 }
