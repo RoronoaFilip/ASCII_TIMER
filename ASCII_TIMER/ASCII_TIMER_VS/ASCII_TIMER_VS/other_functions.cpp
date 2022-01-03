@@ -5,17 +5,7 @@
 #include <Windows.h>
 #include <iostream>
 using namespace std;
-void printTimer() {
-	int n; // Seconds
-	cin >> n;
-	screenClear();
-	int* timePtr = transformHoursMinutesSeconds(n);
-	int hours = timePtr[0];
-	int minutes = timePtr[1];
-	int seconds = timePtr[2];
 
-	printTimer(hours, minutes, seconds, n);
-}
 void screenClear() {
 #ifdef _WIN32
 	system("cls");
@@ -36,7 +26,10 @@ int tensOfNumberCount(const int n) {
 	return count;
 }
 int* transformHoursMinutesSeconds(int n) {
-	int timeArr[3] = {};
+	int* timeArr = new int[3];
+	timeArr[0] = 0; // Hours
+	timeArr[1] = 0; // Minutes
+	timeArr[2] = 0; // Seconds
 	if (n < 60) {
 		timeArr[2] = n;
 	}
@@ -57,88 +50,187 @@ int* transformHoursMinutesSeconds(int n) {
 	}
 	return timeArr;
 }
-void printEndMessage() {
+void printTimer() {
+	int n;    // Seconds
+	cin >> n; // TODO Make this long long and fix it in all files
+	screenClear();
+	int* timePtr = transformHoursMinutesSeconds(n);
+	int hours = timePtr[0];
+	int minutes = timePtr[1];
+	int seconds = timePtr[2];
+
+	printTimer(hours, minutes, seconds, n);
+}
+void printEndMessage(bool invalidEntry) {
+	const int colorWhite = 15;
+	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(h, colorWhite);
 	cout << "To return to Home Screen type: 1" << endl;
 	cout << "To exit type: 0" << endl;
+	if (invalidEntry) {
+		cout << "Invalid entry! Please try again: ";
+	}
 }
-void whenTimerIsZero() {
-	cout << '\a';
-	screenClear();
-	cout << endl;
-	cout << endl;
-	cout << endl;
-	cout << endl;
-	cout << endl;
-	cout << endl;
-	cout << endl;
-	int r = 0;
+void whenTimerIsZero(bool invalidEntry) {
+	const int colorRed = 12;
+
+	for (int i = 1; i <= 7; ++i) {
+		cout << endl;
+	}
+
 	int line = 1;
 	while (line != 12) {
 		for (int i = 0; i <= 7; ++i) {
 			cout << ' ';
 		}
-		printHours(0, line, 1, true);
-		printMinutes(0, line);
-		printSeconds(0, line);
+		printHours(0, line, 1, true, colorRed, colorRed);
+		printMinutes(0, line, colorRed, colorRed);
+		printSeconds(0, line, colorRed, colorRed);
 		++line;
 		cout << endl;
 	}
 	cout << endl;
-	printEndMessage();
+	printEndMessage(invalidEntry);
+
+	int r = 0;
 	cin >> r;
 	if (r == 1) {
 		screenClear();
 		printTimer();
 	}
-	if (r == 0) {
+	else if (r == 0) {
 		screenClear();
 		exit(0);
+	}
+	else {
+		screenClear();
+		whenTimerIsZero(true);
+	}
+}
+void printOnlySeconds(int seconds) {
+	const int colorRed = 12;
+	int line = 1;
+	while (line <= 11) {
+		for (int i = 0; i <= 35; ++i) {
+			cout << ' ';
+		}
+		printSeconds(seconds, line, colorRed, colorRed);
+		++line;
+		cout << endl;
+	}
+}
+void lessThan10Sec(int seconds, int n) {
+	while (n >= 0) {
+		for (int i = 1; i <= 7; ++i) {
+			cout << endl;
+		}
+
+		printOnlySeconds(seconds);
+		for (int i = 1; i <= 5; ++i) {
+			cout << endl;
+		}
+
+		Sleep(250);
+		screenClear();
+		Sleep(250);
+
+		for (int i = 1; i <= 7; ++i) {
+			cout << endl;
+		}
+		printOnlySeconds(seconds);
+		for (int i = 1; i <= 5; ++i) {
+			cout << endl;
+		}
+
+		Sleep(250);
+		screenClear();
+		Sleep(250);
+
+		--seconds;
+		--n;
+
+		if (n == 0) {
+			cout << '\a';
+			screenClear();
+			whenTimerIsZero(false);
+		}
+	}
+}
+void printIt(int hours, int minutes, int seconds, int n) {
+	const int colorYellow = 14; // Value of the Color Yellow
+	const int colorRed = 12;    // Value of the Color Red
+
+	int colorA = rand() % 15;
+	int colorB = rand() % 15;
+	int colorC = rand() % 15;
+	int colorD = rand() % 15;
+	int colorE = rand() % 15;
+	int colorF = rand() % 15;
+	int hoursNumberCount = tensOfNumberCount(hours);
+
+	int line = 1;
+	while (line <= 11) {
+		if (hours > 0) {
+			if (hours >= 100)
+			{
+				cout << "  ";
+			}
+			else {
+				for (int i = 0; i <= 7; ++i) {
+					cout << ' ';
+				}
+			}
+
+			printHours(hours, line, hoursNumberCount, (hours < 10), colorA, colorD);
+			printMinutes(minutes, line, colorB, colorE);
+			printSeconds(seconds, line, colorC, colorF);
+		}
+		else if (minutes > 0) { // The hours aren't printed
+			for (int i = 0; i <= 18; ++i) {
+				cout << ' ';
+			}
+			if ((minutes < 15) || (minutes == 15 && seconds == 0)) { // All the numbers are colored in yellow
+				colorB = colorE = colorC = colorF = colorYellow;
+			}
+			if ((minutes == 1) && (seconds == 0)) { // All the numbers are colored in red
+				colorB = colorE = colorC = colorF = colorRed;
+			}
+
+			printMinutes(minutes, line, colorB, colorE);
+			printSeconds(seconds, line, colorC, colorF);
+		}
+		else if (seconds > 0) { // All the numbers are colored in red
+			if (seconds <= 10) {
+				lessThan10Sec(seconds, n);
+			}
+			for (int i = 0; i <= 35; ++i) {
+				cout << ' ';
+			}
+
+			printSeconds(seconds, line, colorRed, colorRed);
+		}
+
+		++line;
+		cout << endl;
 	}
 }
 void printTimer(int hours, int minutes, int seconds, int n) {
 	while (n >= 0) {
-		//TODO do the coloring
-		int line = 1;
-		cout << endl;
-		cout << endl;
-		cout << endl;
-		cout << endl;
-		cout << endl;
-		cout << endl;
-		cout << endl;
-		int hoursNumberCount = tensOfNumberCount(hours);
-		while (line != 12) {
-			if (hours > 0) {
-				for (int i = 0; i <= 7; ++i) {
-					cout << ' ';
-				}
-				printHours(hours, line, hoursNumberCount, (hours < 10) ? true : false);
-				printMinutes(minutes, line);
-				printSeconds(seconds, line);
+		if (n > 10) {
+			for (int i = 1; i <= 7; ++i) {
+				cout << endl;
 			}
-			else if (minutes > 0) {
-				for (int i = 0; i <= 18; ++i) {
-					cout << ' ';
-				}
-				printMinutes(minutes, line);
-				printSeconds(seconds, line);
-			}
-			else if (seconds > 0) {
-				for (int i = 0; i <= 35; ++i) {
-					cout << ' ';
-				}
-				printSeconds(seconds, line);
-			}
-			++line;
+		}
+
+		printIt(hours, minutes, seconds, n);
+
+		for (int i = 1; i <= 5; ++i) {
 			cout << endl;
 		}
-		cout << endl;
-		cout << endl;
-		cout << endl;
-		cout << endl;
-		cout << endl;
+
 		--seconds;
 		--n;
+
 		if (seconds == -1) {
 			seconds = 59;
 			--minutes;
@@ -147,10 +239,8 @@ void printTimer(int hours, int minutes, int seconds, int n) {
 			minutes = 59;
 			--hours;
 		}
+
 		Sleep(1000);
-		if (n == 0) {
-			whenTimerIsZero();
-		}
 		screenClear();
 	}
 }

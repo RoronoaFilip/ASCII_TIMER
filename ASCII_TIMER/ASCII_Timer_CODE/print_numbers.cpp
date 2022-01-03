@@ -2,7 +2,7 @@
 #include <iostream>
 #include <Windows.h>
 using namespace std;
-const int colorWhite = 15;
+const int colorGrey = 15;
 HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 void print0(int num, int lineNumber, bool isItTheSecondDigit) {
 	switch (lineNumber) {
@@ -17,7 +17,7 @@ void print0(int num, int lineNumber, bool isItTheSecondDigit) {
 	case 7:
 		cout << "0        0 ";
 		if (isItTheSecondDigit) {
-			SetConsoleTextAttribute(h, colorWhite); SetConsoleTextAttribute(h, colorWhite);
+			SetConsoleTextAttribute(h, colorGrey); SetConsoleTextAttribute(h, colorGrey);
 			cout << "# ";
 		}
 		break;
@@ -33,7 +33,7 @@ void print1(int num, int lineNumber, bool isItTheSecondDigit) {
 	cout << "1 ";
 	if ((lineNumber == 4 || lineNumber == 7) && isItTheSecondDigit) {
 		if (isItTheSecondDigit) {
-			SetConsoleTextAttribute(h, colorWhite);
+			SetConsoleTextAttribute(h, colorGrey);
 			cout << "# ";
 		}
 	}
@@ -62,14 +62,14 @@ void print2(int num, int lineNumber, bool isItTheSecondDigit) {
 	case 4:
 		cout << "         2 ";
 		if (isItTheSecondDigit) {
-			SetConsoleTextAttribute(h, colorWhite);
+			SetConsoleTextAttribute(h, colorGrey);
 			cout << "# ";
 		}
 		break;
 	case 7:
 		cout << "2          ";
 		if (isItTheSecondDigit) {
-			SetConsoleTextAttribute(h, colorWhite);
+			SetConsoleTextAttribute(h, colorGrey);
 			cout << "# ";
 		}
 		break;
@@ -97,7 +97,7 @@ void print3(int num, int lineNumber, bool isItTheSecondDigit) {
 	case 7:
 		cout << "         3 ";
 		if (isItTheSecondDigit) {
-			SetConsoleTextAttribute(h, colorWhite);
+			SetConsoleTextAttribute(h, colorGrey);
 			cout << "# ";
 		}
 		break;
@@ -129,14 +129,14 @@ void print4(int num, int lineNumber, bool isItTheSecondDigit) {
 	case 4:
 		cout << "4        4 ";
 		if (isItTheSecondDigit) {
-			SetConsoleTextAttribute(h, colorWhite);
+			SetConsoleTextAttribute(h, colorGrey);
 			cout << "# ";
 		}
 		break;
 	case 7:
 		cout << "         4 ";
 		if (isItTheSecondDigit) {
-			SetConsoleTextAttribute(h, colorWhite);
+			SetConsoleTextAttribute(h, colorGrey);
 			cout << "# ";
 		}
 		break;
@@ -169,14 +169,14 @@ void print5(int num, int lineNumber, bool isItTheSecondDigit) {
 	case 4:
 		cout << "5          ";
 		if (isItTheSecondDigit) {
-			SetConsoleTextAttribute(h, colorWhite);
+			SetConsoleTextAttribute(h, colorGrey);
 			cout << "# ";
 		}
 		break;
 	case 7:
 		cout << "         5 ";
 		if (isItTheSecondDigit) {
-			SetConsoleTextAttribute(h, colorWhite);
+			SetConsoleTextAttribute(h, colorGrey);
 			cout << "# ";
 		}
 		break;
@@ -209,14 +209,14 @@ void print6(int num, int lineNumber, bool isItTheSecondDigit) {
 	case 4:
 		cout << "6          ";
 		if (isItTheSecondDigit) {
-			SetConsoleTextAttribute(h, colorWhite);
+			SetConsoleTextAttribute(h, colorGrey);
 			cout << "# ";
 		}
 		break;
 	case 7:
 		cout << "6        6 ";
 		if (isItTheSecondDigit) {
-			SetConsoleTextAttribute(h, colorWhite);
+			SetConsoleTextAttribute(h, colorGrey);
 			cout << "# ";
 		}
 		break;
@@ -240,7 +240,7 @@ void print7(int num, int lineNumber, bool isItTheSecondDigit) {
 	case 7:
 		cout << "         7 ";
 		if (isItTheSecondDigit) {
-			SetConsoleTextAttribute(h, colorWhite);
+			SetConsoleTextAttribute(h, colorGrey);
 			cout << "# ";
 		}
 		break;
@@ -266,7 +266,7 @@ void print8(int num, int lineNumber, bool isItTheSecondDigit) {
 	case 7:
 		cout << "8        8 ";
 		if (isItTheSecondDigit) {
-			SetConsoleTextAttribute(h, colorWhite);
+			SetConsoleTextAttribute(h, colorGrey);
 			cout << "# ";
 		}
 		break;
@@ -299,14 +299,14 @@ void print9(int num, int lineNumber, bool isItTheSecondDigit) {
 	case 4:
 		cout << "9        9 ";
 		if (isItTheSecondDigit) {
-			SetConsoleTextAttribute(h, colorWhite);
+			SetConsoleTextAttribute(h, colorGrey);
 			cout << "# ";
 		}
 		break;
 	case 7:
 		cout << "         9 ";
 		if (isItTheSecondDigit) {
-			SetConsoleTextAttribute(h, colorWhite);
+			SetConsoleTextAttribute(h, colorGrey);
 			cout << "# ";
 		}
 		break;
