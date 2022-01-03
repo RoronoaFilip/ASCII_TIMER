@@ -1,4 +1,4 @@
-#include "OtherFunctions/other_functions.hpp"
+#include "other_functions.h"
 
 int main() {
     printTimer();
