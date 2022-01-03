@@ -62,9 +62,9 @@ void printTimer() {
 	printTimer(hours, minutes, seconds, n);
 }
 void printEndMessage() {
-	const int colorGray = 15;
+	const int colorWhite = 15;
 	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleTextAttribute(h, colorGray);
+	SetConsoleTextAttribute(h, colorWhite);
 	cout << "To return to Home Screen type: 1" << endl;
 	cout << "To exit type: 0" << endl;
 }
@@ -103,17 +103,62 @@ void whenTimerIsZero() {
 		exit(0);
 	}
 }
+void printOnlySeconds(int seconds) {
+	const int colorRed = 12;
+	int line = 1;
+	while (line <= 11) {
+		for (int i = 0; i <= 35; ++i) {
+			cout << ' ';
+		}
+		printSeconds(seconds, line, colorRed, colorRed);
+		++line;
+		cout << endl;
+	}
+}
+void lessThan15Sec(int seconds, int n) {
+	while (n >= 0) {
+		for (int i = 1; i <= 7; ++i) {
+			cout << endl;
+		}
+
+		printOnlySeconds(seconds);
+		for (int i = 1; i <= 5; ++i) {
+			cout << endl;
+		}
+
+		Sleep(250);
+		screenClear();
+		Sleep(250);
+
+		for (int i = 1; i <= 7; ++i) {
+			cout << endl;
+		}
+		printOnlySeconds(seconds);
+		for (int i = 1; i <= 5; ++i) {
+			cout << endl;
+		}
+
+		Sleep(250);
+		screenClear();
+		Sleep(250);
+
+		--seconds;
+		--n;
+
+		if (n == 0) {
+			whenTimerIsZero();
+		}
+	}
+}
 void printTimer(int hours, int minutes, int seconds, int n) {
 	const int colorYellow = 14; // Value of the Color Yellow
 	const int colorRed = 12;    // Value of the Color Red
 	while (n >= 0) {
-		cout << endl;
-		cout << endl;
-		cout << endl;
-		cout << endl;
-		cout << endl;
-		cout << endl;
-		cout << endl;
+		if (n > 15) {
+			for (int i = 1; i <= 7; ++i) {
+				cout << endl;
+			}
+		}
 		int colorA = rand() % 15;
 		int colorB = rand() % 15;
 		int colorC = rand() % 15;
@@ -121,8 +166,9 @@ void printTimer(int hours, int minutes, int seconds, int n) {
 		int colorE = rand() % 15;
 		int colorF = rand() % 15;
 		int hoursNumberCount = tensOfNumberCount(hours);
+
 		int line = 1;
-		while (line != 12) {
+		while (line <= 11) {
 			if (hours > 0) {
 				for (int i = 0; i <= 7; ++i) {
 					cout << ' ';
@@ -145,6 +191,9 @@ void printTimer(int hours, int minutes, int seconds, int n) {
 				printSeconds(seconds, line, colorC, colorF);
 			}
 			else if (seconds > 0) { // All the numbers are colored in red
+				if (seconds <= 15) {
+					lessThan15Sec(seconds, n);
+				}
 				for (int i = 0; i <= 35; ++i) {
 					cout << ' ';
 				}
@@ -153,13 +202,14 @@ void printTimer(int hours, int minutes, int seconds, int n) {
 			++line;
 			cout << endl;
 		}
-		cout << endl;
-		cout << endl;
-		cout << endl;
-		cout << endl;
-		cout << endl;
+
+		for (int i = 1; i <= 5; ++i) {
+			cout << endl;
+		}
+
 		--seconds;
 		--n;
+
 		if (seconds == -1) {
 			seconds = 59;
 			--minutes;
@@ -168,10 +218,8 @@ void printTimer(int hours, int minutes, int seconds, int n) {
 			minutes = 59;
 			--hours;
 		}
+
 		Sleep(1000);
-		if (n == 0) {
-			whenTimerIsZero();
-		}
 		screenClear();
 	}
 }
