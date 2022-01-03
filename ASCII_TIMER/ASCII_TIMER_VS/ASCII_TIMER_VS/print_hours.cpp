@@ -4,13 +4,16 @@
 void printHours(int hours, int lineNumber, int tensOfNumberCount, bool isHoursLessThanTen, int a, int d) {
 	bool isItTheSecondDigit = false;
 	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);  //HANDLE used for coloring of the output
+
 	if (isHoursLessThanTen) { //If hours is a single digit a 0 gets printed before it
 		SetConsoleTextAttribute(h, d);//Different coloring for the 0
 		print0(0, lineNumber, isItTheSecondDigit);
 	}
+
 	if (tensOfNumberCount == 1) {//When hours becomes a single digit
 		isItTheSecondDigit = true;
 	}
+
 	SetConsoleTextAttribute(h, a);//Coloring of the digit
 
 	switch (hours / tensOfNumberCount) {//Based on the value of hours the same number and pattern gets printed

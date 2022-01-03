@@ -37,6 +37,7 @@ void printMinutes(const int minutes, const int lineNumber, const int b, const in
 		print9(minutes / 10, lineNumber, isItTheSecondDigit);
 		break;
 	}
+
 	isItTheSecondDigit = true;
 	SetConsoleTextAttribute(h, e);
 	switch (minutes % 10) {
