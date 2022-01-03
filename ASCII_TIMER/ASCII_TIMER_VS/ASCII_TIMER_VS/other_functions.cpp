@@ -115,7 +115,7 @@ void printOnlySeconds(int seconds) {
 		cout << endl;
 	}
 }
-void lessThan15Sec(int seconds, int n) {
+void lessThan10Sec(int seconds, int n) {
 	while (n >= 0) {
 		for (int i = 1; i <= 7; ++i) {
 			cout << endl;
@@ -154,7 +154,7 @@ void printTimer(int hours, int minutes, int seconds, int n) {
 	const int colorYellow = 14; // Value of the Color Yellow
 	const int colorRed = 12;    // Value of the Color Red
 	while (n >= 0) {
-		if (n > 15) {
+		if (n > 10) {
 			for (int i = 1; i <= 7; ++i) {
 				cout << endl;
 			}
@@ -191,8 +191,8 @@ void printTimer(int hours, int minutes, int seconds, int n) {
 				printSeconds(seconds, line, colorC, colorF);
 			}
 			else if (seconds > 0) { // All the numbers are colored in red
-				if (seconds <= 15) {
-					lessThan15Sec(seconds, n);
+				if (seconds == 10) {
+					lessThan10Sec(seconds, n);
 				}
 				for (int i = 0; i <= 35; ++i) {
 					cout << ' ';
