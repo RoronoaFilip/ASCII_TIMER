@@ -3,6 +3,7 @@
 #include <Windows.h>
 void printHours(int hours, int lineNumber, int tensOfNumberCount, bool isHoursLessThanTen, int a, int d) {
 	bool isItTheSecondDigit = false;
+
 	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);  //HANDLE used for coloring of the output
 
 	if (isHoursLessThanTen) { //If hours is a single digit a 0 gets printed before it
@@ -14,7 +15,7 @@ void printHours(int hours, int lineNumber, int tensOfNumberCount, bool isHoursLe
 		isItTheSecondDigit = true;
 	}
 
-	SetConsoleTextAttribute(h, a);//Coloring of the digit
+	SetConsoleTextAttribute(h, a);//Coloring of the digit 
 
 	switch (hours / tensOfNumberCount) {//Based on the value of hours the same number and pattern gets printed
 	case 0:

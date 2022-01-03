@@ -8,4 +8,7 @@ void printTimer(int hours, int minutes, int seconds, int n);
 void printTimer();
 void printEndMessage();
 void whenTimerIsZero();
+void lessThan10Sec(int seconds, int n);
+void printOnlySeconds(int seconds);
+void printIt(int hours, int minutes, int seconds, int n);
 #endif

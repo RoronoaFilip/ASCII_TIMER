@@ -3,8 +3,10 @@
 #include <Windows.h>
 void printMinutes(const int minutes, const int lineNumber, const int b, const int e) {
 	bool isItTheSecondDigit = false;
+
 	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(h, b);
+
 	switch (minutes / 10) {
 	case 0:
 		print0(minutes / 10, lineNumber, isItTheSecondDigit);
@@ -39,6 +41,7 @@ void printMinutes(const int minutes, const int lineNumber, const int b, const in
 	}
 
 	isItTheSecondDigit = true;
+
 	SetConsoleTextAttribute(h, e);
 	switch (minutes % 10) {
 	case 0:
