@@ -20,18 +20,24 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ascii_timer.cpp" />
+    <ClCompile Include="end_screen.cpp" />
+    <ClCompile Include="home_screen.cpp" />
     <ClCompile Include="other_functions.cpp" />
     <ClCompile Include="print_hours.cpp" />
     <ClCompile Include="print_minutes.cpp" />
     <ClCompile Include="print_numbers.cpp" />
     <ClCompile Include="print_seconds.cpp" />
+    <ClCompile Include="print_timer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="end_screen.h" />
+    <ClInclude Include="home_screen.h" />
     <ClInclude Include="other_functions.h" />
     <ClInclude Include="print_hours.h" />
     <ClInclude Include="print_minutes.h" />
     <ClInclude Include="print_numbers.h" />
     <ClInclude Include="print_seconds.h" />
+    <ClInclude Include="print_timer.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
