@@ -3,9 +3,9 @@
 #define HOME_SCREEN_H
 void homeScreen();
 void printHomeScreenAndMenu();
-void printT(int line);
-void printI();
-void printM(int line);
-void printE(int line);
-void printR(int line);
+void printT(int line, int color);
+void printI(int color);
+void printM(int line, int color);
+void printE(int line, int color);
+void printR(int line, int color);
 #endif

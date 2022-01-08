@@ -1,16 +1,17 @@
+#include "end_screen.h"
 #include "other_functions.h"
 #include "print_hours.h"
 #include "print_minutes.h"
 #include "print_seconds.h"
-#include "end_screen.h"
 #include <Windows.h>
+#include <ctime>
 #include <iostream>
 using namespace std;
 void printOnlySeconds(int seconds) {
 	const int colorRed = 12;
 	int line = 1;
 	while (line <= 11) {
-		for (int i = 0; i <= 35; ++i) {
+		for (int i = 0; i <= 29; ++i) {
 			cout << ' ';
 		}
 		printSeconds(seconds, line, colorRed, colorRed);
@@ -59,50 +60,51 @@ void printIt(int hours, int minutes, int seconds, int n) {
 	const int colorYellow = 14; // Value of the Color Yellow
 	const int colorRed = 12;    // Value of the Color Red
 
-	int colorA = rand() % 15;
-	int colorB = rand() % 15;
-	int colorC = rand() % 15;
-	int colorD = rand() % 15;
-	int colorE = rand() % 15;
-	int colorF = rand() % 15;
+	const int SIZE = 6;
+	int colors[SIZE] = {};
+
+	srand(time(0));
+	for (int i = 0; i < 6; ++i) {
+		colors[i] += 1 + (rand() % 15);
+	}
+
 	int hoursNumberCount = tensOfNumberCount(hours);
 
 	int line = 1;
 	while (line <= 11) {
 		if (hours > 0) {
-			if (hours >= 100)
-			{
+			if (hours >= 100) {
 				cout << "  ";
 			}
 			else {
-				for (int i = 0; i <= 7; ++i) {
+				for (int i = 0; i <= 2; ++i) { // 10 2 10 2 1 2 10 2 10
 					cout << ' ';
 				}
 			}
 
-			printHours(hours, line, hoursNumberCount, (hours < 10), colorA, colorD);
-			printMinutes(minutes, line, colorB, colorE);
-			printSeconds(seconds, line, colorC, colorF);
+			printHours(hours, line, hoursNumberCount, (hours < 10), colors[0], colors[1]);
+			printMinutes(minutes, line, colors[2], colors[3]);
+			printSeconds(seconds, line, colors[4], colors[5]);
 		}
 		else if (minutes > 0) { // The hours aren't printed
-			for (int i = 0; i <= 18; ++i) {
+			for (int i = 0; i <= 15; ++i) {
 				cout << ' ';
 			}
 			if ((minutes < 15) || (minutes == 15 && seconds == 0)) { // All the numbers are colored in yellow
-				colorB = colorE = colorC = colorF = colorYellow;
+				colors[2] = colors[3] = colors[4] = colors[5] = colorYellow;
 			}
 			if ((minutes == 1) && (seconds == 0)) { // All the numbers are colored in red
-				colorB = colorE = colorC = colorF = colorRed;
+				colors[2] = colors[3] = colors[4] = colors[5] = colorRed;
 			}
 
-			printMinutes(minutes, line, colorB, colorE);
-			printSeconds(seconds, line, colorC, colorF);
+			printMinutes(minutes, line, colors[2], colors[3]);
+			printSeconds(seconds, line, colors[4], colors[5]);
 		}
 		else if (seconds > 0) { // All the numbers are colored in red
 			if (seconds <= 10) {
 				lessThan10Sec(seconds, n);
 			}
-			for (int i = 0; i <= 35; ++i) {
+			for (int i = 0; i <= 29; ++i) {
 				cout << ' ';
 			}
 
@@ -123,7 +125,7 @@ void printTimer(int hours, int minutes, int seconds, int n) {
 
 		printIt(hours, minutes, seconds, n);
 
-		for (int i = 1; i <= 5; ++i) {
+		for (int i = 1; i <= 4; ++i) {
 			cout << endl;
 		}
 
