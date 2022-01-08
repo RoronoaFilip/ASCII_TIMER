@@ -1,6 +1,6 @@
-#include "other_functions.h"
+#include "home_screen.h"
 
 int main() {
-    printTimer();
-    return 0;
+	homeScreen();
+	return 0;
 }
