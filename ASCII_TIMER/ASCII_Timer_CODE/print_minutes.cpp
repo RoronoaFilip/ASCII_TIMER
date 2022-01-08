@@ -1,10 +1,12 @@
 #include "print_minutes.h"
 #include "print_numbers.h"
 #include <Windows.h>
-void printMinutes(const int minutes, const int lineNumber, const int b, const int e) {
+void printMinutes(const int minutes, const int lineNumber, const int color1, const int color2) {
 	bool isItTheSecondDigit = false;
+
 	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleTextAttribute(h, b);
+	SetConsoleTextAttribute(h, color1);
+
 	switch (minutes / 10) {
 	case 0:
 		print0(minutes / 10, lineNumber, isItTheSecondDigit);
@@ -37,8 +39,10 @@ void printMinutes(const int minutes, const int lineNumber, const int b, const in
 		print9(minutes / 10, lineNumber, isItTheSecondDigit);
 		break;
 	}
+
 	isItTheSecondDigit = true;
-	SetConsoleTextAttribute(h, e);
+
+	SetConsoleTextAttribute(h, color2);
 	switch (minutes % 10) {
 	case 0:
 		print0(minutes % 10, lineNumber, isItTheSecondDigit);
