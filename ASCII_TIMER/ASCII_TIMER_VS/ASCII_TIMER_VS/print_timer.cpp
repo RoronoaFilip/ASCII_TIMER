@@ -11,15 +11,24 @@ void printOnlySeconds(int seconds) {
 	const int colorRed = 12;
 	int line = 1;
 	while (line <= 11) {
-		for (int i = 0; i <= 29; ++i) {
-			cout << ' ';
+		if (seconds == 10) {
+			for (int i = 0; i <= 38; ++i) {
+				cout << ' ';
+			}
 		}
+		else {
+			for (int i = 0; i <= 29; ++i) {
+				cout << ' ';
+			}
+		}
+
 		printSeconds(seconds, line, colorRed, colorRed);
 		++line;
 		cout << endl;
 	}
 }
 void lessThan10Sec(int seconds, int n) {
+
 	while (n >= 0) {
 		for (int i = 1; i <= 7; ++i) {
 			cout << endl;
@@ -73,11 +82,31 @@ void printIt(int hours, int minutes, int seconds, int n) {
 	int line = 1;
 	while (line <= 11) {
 		if (hours > 0) {
-			if (hours >= 100) {
+			if (hours >= 100) {// Whitespaces
 				cout << "  ";
 			}
+			else if (hours == 1) {
+				for (int i = 0; i <= 11; ++i) {
+					cout << ' ';
+				}
+			}
+			else if (hours < 10) {
+				for (int i = 0; i <= 2; ++i) {
+					cout << ' ';
+				}
+			}
+			else if (hours == 11) {
+				for (int i = 0; i <= 20; ++i) {
+					cout << ' ';
+				}
+			}
+			else if (hours / hoursNumberCount == 1 || (hours / (hoursNumberCount / 10)) % 10 == 1) {// If one of the digits is 1
+				for (int i = 0; i <= 11; ++i) {
+					cout << ' ';
+				}
+			}
 			else {
-				for (int i = 0; i <= 2; ++i) { // 10 2 10 2 1 2 10 2 10
+				for (int i = 0; i <= 2; ++i) {
 					cout << ' ';
 				}
 			}
@@ -87,9 +116,23 @@ void printIt(int hours, int minutes, int seconds, int n) {
 			printSeconds(seconds, line, colors[4], colors[5]);
 		}
 		else if (minutes > 0) { // The hours aren't printed
-			for (int i = 0; i <= 15; ++i) {
-				cout << ' ';
+
+			if (minutes / 10 == 1 && minutes % 10 == 1) {
+				for (int i = 0; i <= 33; ++i) {
+					cout << ' ';
+				}
 			}
+			else if (minutes / 10 == 1 || minutes % 10 == 1) {
+				for (int i = 0; i <= 24; ++i) {
+					cout << ' ';
+				}
+			}
+			else {
+				for (int i = 0; i <= 15; ++i) {
+					cout << ' ';
+				}
+			}
+
 			if ((minutes < 15) || (minutes == 15 && seconds == 0)) { // All the numbers are colored in yellow
 				colors[2] = colors[3] = colors[4] = colors[5] = colorYellow;
 			}
@@ -104,8 +147,15 @@ void printIt(int hours, int minutes, int seconds, int n) {
 			if (seconds <= 10) {
 				lessThan10Sec(seconds, n);
 			}
-			for (int i = 0; i <= 29; ++i) {
-				cout << ' ';
+			if (seconds >= 10 && seconds < 20) {
+				for (int i = 0; i <= 38; ++i) {
+					cout << ' ';
+				}
+			}
+			else {
+				for (int i = 0; i <= 29; ++i) {
+					cout << ' ';
+				}
 			}
 
 			printSeconds(seconds, line, colorRed, colorRed);

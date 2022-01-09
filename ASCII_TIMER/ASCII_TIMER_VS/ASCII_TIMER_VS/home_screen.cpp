@@ -93,12 +93,15 @@ void printR(int line, int color) {
 		break;
 	}
 }
-void printHomeScreenAndMenu() { // TODO Add a Menu
+void printHomeScreenAndMenu(bool InvalidEntry) { // TODO Add a Menu
+	const int colorWhite = 15;
+	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+
 	const int colorSize = 5;
 	int colors[colorSize] = {};
 
-	srand(time(0));
-	for (int i = 0; i < colorSize; ++i) {
+	srand(time(nullptr));
+	for (int i = 0; i < colorSize; ++i) { // Random Colors
 		colors[i] = 1 + (rand() % 15);
 	}
 
@@ -106,6 +109,7 @@ void printHomeScreenAndMenu() { // TODO Add a Menu
 		cout << endl;
 	}
 
+	// "TIMER" Text
 	int line = 1;
 	while (line <= 11) {
 		for (int i = 1; i <= 16; ++i) {
@@ -121,9 +125,56 @@ void printHomeScreenAndMenu() { // TODO Add a Menu
 		cout << endl;
 		++line;
 	}
+
+	// MENU
+	SetConsoleTextAttribute(h, colorWhite);
+	cout << endl;
+	cout << endl;
+
+	for (int i = 1; i <= 32; ++i) {
+		cout << ' ';
+	}
+
+	cout << "Input Menu:";
+	cout << endl;
+
+	for (int i = 1; i <= 20; ++i) {
+		cout << ' ';
+	}
+
+	cout << "> Enter an Amount of Time in Seconds";
+	cout << endl;
+
+	for (int i = 1; i <= 22; ++i) {
+		cout << ' ';
+	}
+
+	cout << "> To exit the Program enter '0' ";
+	cout << endl;
+
+
+	if (!InvalidEntry) {
+		for (int i = 1; i <= 32; ++i) {
+			cout << ' ';
+		}
+		cout << "Your Input: ";
+	}
+	if (InvalidEntry) {
+		cout << endl;
+		for (int i = 1; i <= 22; ++i) {
+			cout << ' ';
+		}
+		cout << "Invalid Entry! Please try again!";
+
+		cout << endl;
+		for (int i = 1; i <= 32; ++i) {
+			cout << ' ';
+		}
+		cout << "Your Input: ";
+	}
 }
-void homeScreen() {
-	printHomeScreenAndMenu();
+void homeScreen(bool InvalidEntry = false) {
+	printHomeScreenAndMenu(InvalidEntry);
 
 	const int colorWhite = 15;
 	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -131,6 +182,14 @@ void homeScreen() {
 
 	int n;    // Seconds
 	cin >> n; // TODO Make this long long and fix it in all files
+	if (n == 0) {
+		screenClear();
+		exit(0);
+	}
+	if (n < 0) {
+		screenClear();
+		homeScreen(true);
+	}
 
 	screenClear(); // TODO Make the Menu interactive like the End Screen
 
