@@ -6,16 +6,38 @@
 #include "home_screen.h"
 #include <Windows.h>
 #include <iostream>
+#include <string>
 using namespace std;
 
 void printEndScreen(bool invalidEntry) {
 	const int colorWhite = 15;
 	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(h, colorWhite);
+
+	for (int i = 1; i <= 25; ++i) {
+		cout << ' ';
+	}
 	cout << "To return to Home Screen type: 1" << endl;
+	for (int i = 1; i <= 32; ++i) {
+		cout << ' ';
+	}
 	cout << "To exit type: 0" << endl;
+	if (!invalidEntry) {
+		for (int i = 1; i <= 34; ++i) {
+			cout << ' ';
+		}
+		cout << "Your Entry: ";
+	}
 	if (invalidEntry) {
-		cout << "Invalid entry! Please try again: ";
+		cout << endl;
+		for (int i = 1; i <= 24; ++i) {
+			cout << ' ';
+		}
+		cout << "Invalid entry! Please try again!" << endl;
+		for (int i = 1; i <= 34; ++i) {
+			cout << ' ';
+		}
+		cout << "Your Entry: ";
 	}
 }
 void endScreen(bool invalidEntry) {
@@ -27,7 +49,7 @@ void endScreen(bool invalidEntry) {
 
 	int line = 1;
 	while (line != 12) {
-		for (int i = 0; i <= 7; ++i) {
+		for (int i = 0; i <= 2; ++i) {
 			cout << ' ';
 		}
 		printHours(0, line, 1, true, colorRed, colorRed);
@@ -39,13 +61,19 @@ void endScreen(bool invalidEntry) {
 	cout << endl;
 	printEndScreen(invalidEntry);
 
-	int r = 0;
-	cin >> r;
-	if (r == 1) {
+	string input;
+	getline(cin, input);
+	if (!isInputCorrect(input)) {
+		screenClear();
+		endScreen(true);
+	}
+
+	int num = getNumber(input);
+	if (num == 1) {
 		screenClear();
 		homeScreen();
 	}
-	else if (r == 0) {
+	else if (num == 0) {
 		screenClear();
 		exit(0);
 	}
