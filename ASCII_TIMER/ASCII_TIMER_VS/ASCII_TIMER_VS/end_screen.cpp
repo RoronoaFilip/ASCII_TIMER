@@ -6,6 +6,7 @@
 #include "home_screen.h"
 #include <Windows.h>
 #include <iostream>
+#include <string>
 using namespace std;
 
 void printEndScreen(bool invalidEntry) {
@@ -60,13 +61,19 @@ void endScreen(bool invalidEntry) {
 	cout << endl;
 	printEndScreen(invalidEntry);
 
-	int r = 0;
-	cin >> r;
-	if (r == 1) {
+	string input;
+	getline(cin, input);
+	if (!isInputCorrect(input)) {
+		screenClear();
+		endScreen(true);
+	}
+
+	int num = getNumber(input);
+	if (num == 1) {
 		screenClear();
 		homeScreen();
 	}
-	else if (r == 0) {
+	else if (num == 0) {
 		screenClear();
 		exit(0);
 	}

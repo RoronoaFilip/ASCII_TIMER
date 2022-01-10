@@ -1,6 +1,6 @@
 #include "other_functions.h"
 #include <iostream>
-
+using namespace std;
 void screenClear() {
 #ifdef _WIN32
 	system("cls");
@@ -44,4 +44,31 @@ int* transformHoursMinutesSeconds(int n) {
 		}
 	}
 	return timeArr;
+}
+bool isInputCorrect(string input) {
+
+	for (int i = 0; input[i] != '\0'; ++i) {
+		if (input[i] == ' ') {
+			continue;
+		}
+		if (input[i] < '0' || input[i] > '9') {
+			return false;
+		}
+	}
+	for (int i = 0; input[i] != '\0'; ++i) {
+		if (input[i] >= '0' && input[i] <= '9') {
+			return true;
+		}
+	}
+	return false;
+}
+int getNumber(string input) {
+	int number = 0;
+	for (int i = 0; input[i] != '\0'; ++i) {
+		if (input[i] == ' ') {
+			continue;
+		}
+		number = number * 10 + (input[i] - '0');
+	}
+	return number;
 }
