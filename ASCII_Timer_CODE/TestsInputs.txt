@@ -1,0 +1,58 @@
+Valid Inputs:
+
+1000000000
+1000000
+100000
+10000
+1000
+100
+===========================================================================
+
+Invalid Inputs::
+
+1. All Types of Characters other than Numbers
+2. Numbers like:
+| 1 2
+| 1 23
+| 12 3
+| 12 34
+| 1 2345
+| 23 4567
+| 456 7890
+| 4567 890
+| 1 23 456
+| 12 3 456
+| 1 234 567 890
+tl:dr If the Input has atleast one Character other than a Number
+===========================================================================
+
+Tests:
+
+//These Inputs are Invalid, but it's easier to read
+=========================================================================== 
+3 600 000| -> 1000 Hours (Transform to 3 Digit Hours) Centering Test
+360 000--|--> 100 Hours (Transform to 2 Digit Hours) Centering Test
+36 000---|--> 10 Hours (Transform to single Digit Hours) Centering Test
+3 600----| -> 1 Hours (Transform to minutes) Centering Test
+600------| -> 10 Minutes
+60-------| -> 1 Minute
+===========================================================================
+72 000---|--> 20 Hours (Transform to 10<=hours<=19) Centering Test
+43 200---|--> 12 Hours (Transform to 11 hours) Centering Test
+39 600---|--> 11 Hours (Transform to 10 hours) Centering Test
+===========================================================================
+900------|--> 15 Minutes (Color Yellow)
+720------|--> 12 Minutes (Transform to 11 Minutes)  Centering Test
+660------|--> 11 Minutes (Transform to 10 Minutes)  Centering Test
+600------|--> 10 Minutes (Transform to single Digit Minutes) Centering Test
+60-------|--> 1 Minute (Color Red)
+===========================================================================
+20 -> 20 Seconds Centering Test
+11 -> 11 Seconds Centering Test
+1<=Input<=10 -> Blinking
+0 -> Straight to End Screen
+===========================================================================
+
+
+
+
