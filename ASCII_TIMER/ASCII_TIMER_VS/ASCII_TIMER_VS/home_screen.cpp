@@ -1,3 +1,18 @@
+/**
+ *
+ * Solution to course project # 9
+ * Introduction to programming course
+ * Faculty of Mathematics and Informatics of Sofia University
+ * Winter semester 2021/2022
+ *
+ * @author Filip Filchev
+ * @idnumber 0MI0600041
+ * @compiler VC
+ *
+ * File with all Functions for the Home Screen
+ *
+ *
+ */
 #include "other_functions.h"
 #include "print_timer.h"
 #include <Windows.h>
@@ -6,6 +21,7 @@
 #include <string>
 using namespace std;
 void printT(int line, int color) {
+    // Pattern of 'T'
     HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(h, color);
     switch (line) {
@@ -17,11 +33,13 @@ void printT(int line, int color) {
     }
 }
 void printI(int color) {
+    // Pattern of 'I'
     HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(h, color);
     cout << "I  ";
 }
 void printM(int line, int color) {
+    // Pattern of 'M'
     HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(h, color);
     switch (line) {
@@ -46,6 +64,7 @@ void printM(int line, int color) {
     }
 }
 void printE(int line, int color) {
+    // Pattern of 'E'
     HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(h, color);
     switch (line) {
@@ -60,6 +79,7 @@ void printE(int line, int color) {
     }
 }
 void printR(int line, int color) {
+    // Pattern of 'R'
     HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(h, color);
     switch (line) {
@@ -95,15 +115,16 @@ void printR(int line, int color) {
     }
 }
 void printHomeScreenAndMenu(bool InvalidEntry) {
+    // Printing the Home Screen and Menu
     const int colorWhite = 15;
     HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 
     const int colorSize = 5;
-    int colors[colorSize] = {};
+    int colors[colorSize] = {}; // Array for random Colors
 
     srand(time(nullptr));
-    for (int i = 0; i < colorSize; ++i) { // Random Colors
-        colors[i] = 1 + (rand() % 15);
+    for (int i = 0; i < colorSize; ++i) {
+        colors[i] = 1 + (rand() % 15); // The Elements never get the Value of the Color black, which is 0
     }
 
     for (int i = 1; i <= 3; ++i) {
@@ -116,7 +137,7 @@ void printHomeScreenAndMenu(bool InvalidEntry) {
         for (int i = 1; i <= 16; ++i) {
             cout << ' ';
         }
-
+        // Each Letter is colored randomly
         printT(line, colors[0]);
         printI(colors[1]);
         printM(line, colors[2]);
@@ -127,8 +148,8 @@ void printHomeScreenAndMenu(bool InvalidEntry) {
         ++line;
     }
 
-    // MENU
-    SetConsoleTextAttribute(h, colorWhite);
+    // The Menu
+    SetConsoleTextAttribute(h, colorWhite); // Now everything is white
     cout << endl;
     cout << endl;
 
@@ -153,13 +174,13 @@ void printHomeScreenAndMenu(bool InvalidEntry) {
     cout << "> To exit the Program enter '0' ";
     cout << endl;
 
-    if (!InvalidEntry) {
+    if (!InvalidEntry) { // Print this if there isn't an invalid Entry
         for (int i = 1; i <= 32; ++i) {
             cout << ' ';
         }
         cout << "Your Input: ";
     }
-    if (InvalidEntry) {
+    if (InvalidEntry) { // Print this if there is an invalid Entry
         cout << endl;
         for (int i = 1; i <= 22; ++i) {
             cout << ' ';
@@ -174,29 +195,30 @@ void printHomeScreenAndMenu(bool InvalidEntry) {
     }
 }
 void homeScreen(bool InvalidEntry = false) {
-    printHomeScreenAndMenu(InvalidEntry);
+    printHomeScreenAndMenu(InvalidEntry); // Print "Text" and the Menu
 
     const int colorWhite = 15;
     HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(h, colorWhite);
 
-    string input;
+    string input; // A String to determine if the Input is valid
     getline(cin, input);
 
-    if (!isInputCorrect(input)) {
+    if (!isInputCorrect(input)) { // Home Screen is printed with Invalid Entry Text
         screenClear();
         homeScreen(true);
     }
 
-    int n = getNumber(input); // Transform to Seconds
-    if (n == 0) {
+    int n = getNumber(input); // Transform string to integer
+
+    if (n == 0) { // Exit Value
         screenClear();
         exit(0);
     }
 
     screenClear();
 
-    int *timePtr = transformHoursMinutesSeconds(n);
+    int *timePtr = transformHoursMinutesSeconds(n); // Transform to hours|minutes|seconds
     int hours = timePtr[0];
     int minutes = timePtr[1];
     int seconds = timePtr[2];

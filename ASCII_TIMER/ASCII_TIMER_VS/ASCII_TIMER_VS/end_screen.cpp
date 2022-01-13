@@ -1,20 +1,54 @@
+/**
+ *
+ * Solution to course project # 9
+ * Introduction to programming course
+ * Faculty of Mathematics and Informatics of Sofia University
+ * Winter semester 2021/2022
+ *
+ * @author Filip Filchev
+ * @idnumber 0MI0600041
+ * @compiler VC
+ *
+ * File with all Functions for the End Screen
+ *
+ */
+#include "end_screen.h"
+#include "home_screen.h"
 #include "other_functions.h"
 #include "print_hours.h"
 #include "print_minutes.h"
 #include "print_seconds.h"
-#include "end_screen.h"
-#include "home_screen.h"
 #include <Windows.h>
 #include <iostream>
 #include <string>
 using namespace std;
 
 void printEndScreen(bool invalidEntry) {
+	// Printing the End Screen
 	const int colorWhite = 15;
+	const int colorRed = 12;
 	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+
+	for (int i = 1; i <= 7; ++i) {
+		cout << endl;
+	}
+
+	int line = 1;
+	while (line != 12) { // Print 00:00:00 centered
+		for (int i = 0; i <= 2; ++i) {
+			cout << ' ';
+		}
+		printHours(0, line, 1, true, colorRed, colorRed);
+		printMinutes(0, line, colorRed, colorRed);
+		printSeconds(0, line, colorRed, colorRed);
+		++line;
+		cout << endl;
+	}
+	cout << endl;
+
 	SetConsoleTextAttribute(h, colorWhite);
 
-	for (int i = 1; i <= 25; ++i) {
+	for (int i = 1; i <= 25; ++i) { // Print a Menu
 		cout << ' ';
 	}
 	cout << "To return to Home Screen type: 1" << endl;
@@ -22,13 +56,14 @@ void printEndScreen(bool invalidEntry) {
 		cout << ' ';
 	}
 	cout << "To exit type: 0" << endl;
-	if (!invalidEntry) {
+
+	if (!invalidEntry) { // Print this if there isn't an invalid Entry
 		for (int i = 1; i <= 34; ++i) {
 			cout << ' ';
 		}
 		cout << "Your Entry: ";
 	}
-	if (invalidEntry) {
+	if (invalidEntry) { // Print this if there is an invalid Entry
 		cout << endl;
 		for (int i = 1; i <= 24; ++i) {
 			cout << ' ';
@@ -41,34 +76,18 @@ void printEndScreen(bool invalidEntry) {
 	}
 }
 void endScreen(bool invalidEntry) {
-	const int colorRed = 12;
 
-	for (int i = 1; i <= 7; ++i) {
-		cout << endl;
-	}
+	printEndScreen(invalidEntry); // Print the End Screen
 
-	int line = 1;
-	while (line != 12) {
-		for (int i = 0; i <= 2; ++i) {
-			cout << ' ';
-		}
-		printHours(0, line, 1, true, colorRed, colorRed);
-		printMinutes(0, line, colorRed, colorRed);
-		printSeconds(0, line, colorRed, colorRed);
-		++line;
-		cout << endl;
-	}
-	cout << endl;
-	printEndScreen(invalidEntry);
-
-	string input;
+	string input; // A String to determine if the Input is valid
 	getline(cin, input);
-	if (!isInputCorrect(input)) {
+
+	if (!isInputCorrect(input)) { // Print the End Screen with an Invalid Entry Text
 		screenClear();
 		endScreen(true);
 	}
 
-	int num = getNumber(input);
+	int num = getNumber(input); // Transform string to integer
 	if (num == 1) {
 		screenClear();
 		homeScreen();
@@ -79,6 +98,6 @@ void endScreen(bool invalidEntry) {
 	}
 	else {
 		screenClear();
-		endScreen(true);
+		endScreen(true); // Print the End Screen with an Invalid Entry Text
 	}
 }
