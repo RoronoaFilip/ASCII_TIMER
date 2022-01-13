@@ -1,6 +1,6 @@
 # ITP-Praktikum-Project
 >**Project for Introduction to Programming from FMI Semester 1**  
->Link to the Docs Document [here](https://docs.google.com/document/d/1TLs8k6gelVqKmfflBVkEZJ2nadfqpIbJqB-dmi3oNEw/edit)  
+>Link to the Docs Document [here](https://github.com/RoronoaFilip/ITP-Praktikum-Project/blob/workflow/09-Project%20_ASCII%20timer_%202021.docx)  
 
 <h1 align = "center">
   СУ „Св. Климент Охридски“, ФМИ 
