@@ -80,3 +80,25 @@ int getNumber(string input) {
 	}
 	return number;
 }
+int countOfOnes(int hours, int minutes, int seconds) {
+	int count = 0;
+	while (hours > 0) {
+		if (hours % 10 == 1) {
+			++count;
+		}
+		hours /= 10;
+	}
+	while (minutes > 0) {
+		if (minutes % 10 == 1) {
+			++count;
+		}
+		minutes /= 10;
+	}
+	while (seconds > 0) {
+		if (seconds % 10 == 1) {
+			++count;
+		}
+		seconds /= 10;
+	}
+	return count;
+}
