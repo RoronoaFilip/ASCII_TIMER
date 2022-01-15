@@ -43,7 +43,7 @@
 * only seconds  
 ![Image for Seconds](/ReadMeImages/Seconds.png)  
 
-========================================================================================
+#  
 
 ## The Way the Timer works:  
 * Each Digit has a specific Pattern, which is saved via Functions in print_number.cpp.
@@ -73,24 +73,20 @@
 * 36 000---|--> 10 Hours (Transform to single Digit Hours) Centering Test
 * 3 600----|---> 1 Hours (Transform to minutes) Centering Test
 * 600------|--> 10 Minutes
-* 60-------|----> 1 Minute  
-
-========================================================================================
+* 60-------|----> 1 Minute
+##
 * 72 000---|--> 20 Hours (Transform to 10<=hours<=19) Centering Test
 * 43 200---|--> 12 Hours (Transform to 11 hours) Centering Test
-* 39 600---|--> 11 Hours (Transform to 10 hours) Centering Test  
-
-========================================================================================
+* 39 600---|--> 11 Hours (Transform to 10 hours) Centering Test
+##
 * 900------|--> 15 Minutes (Color Yellow)
 * 720------|--> 12 Minutes (Transform to 11 Minutes) Centering Test
 * 660------|--> 11 Minutes (Transform to 10 Minutes) Centering Test
 * 600------|--> 10 Minutes (Transform to single Digit Minutes) Centering Test
-* 60-------|--> 1 Minute (Color Red)  
-
-========================================================================================
+* 60-------|--> 1 Minute (Color Red)
+##
 * 20 -> 20 Seconds Centering Test
 * 11 -> 11 Seconds Centering Test
 * 1<=Input<=10 -> Blinking
-* 0 -> Straight to End Screen  
-
-========================================================================================
+* 0 -> Straight to End Screen
+##
