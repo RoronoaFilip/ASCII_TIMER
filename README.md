@@ -88,5 +88,4 @@
 * 20 -> 20 Seconds Centering Test
 * 11 -> 11 Seconds Centering Test
 * 1<=Input<=10 -> Blinking
-* 0 -> Straight to End Screen
 ##

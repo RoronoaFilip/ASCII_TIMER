@@ -14,6 +14,7 @@
  */
 #include "other_functions.h"
 #include <iostream>
+
 using namespace std;
 void screenClear() {
 	// Clear the Console
