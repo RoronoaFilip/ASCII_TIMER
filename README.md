@@ -47,7 +47,7 @@
 
 ## The Way the Timer works:  
 * Each Digit has a specific Pattern, which is saved via Functions in print_number.cpp.
-* Each Digit get's printed based on that Pattern and the Line the Printing is on. (A Loop for the Number of the Line )  
+* Each Digit get's printed based on that Pattern and the Line the Printing is on.(A Loop for the Number of the Line)  
 * The Functions get the Line Number and that Line from the Pattern get's printed.  
 * It works even if the Hours are more than 100 but the Timer isn't centered as the Instructions specify.
 ## Used Libraries:
