@@ -30,11 +30,11 @@ void printOnlySeconds(int seconds) {
         // Centering Whitespaces
         int numberOfOnes = countOfOnes(0, 0, seconds);
         if (numberOfOnes == 0) {
-            for (int i = 0; i <= 29; ++i) {
+            for (int i = 1; i <= 29; ++i) {
                 cout << ' ';
             }
         } else {
-            for (int i = 0; i <= 29 + 9 * numberOfOnes; ++i) {
+            for (int i = 1; i <= 29 + 9 * numberOfOnes; ++i) {
                 cout << ' ';
             }
         }
@@ -107,11 +107,11 @@ void printIt(int hours, int minutes, int seconds, int n) {
             if (hours >= 100) {
                 cout << "  ";
             } else if (numberOfOnes == 0) {
-                for (int i = 0; i <= 2; ++i) {
+                for (int i = 1; i <= 2; ++i) {
                     cout << ' ';
                 }
             } else {
-                for (int i = 0; i <= 2 + 9 * numberOfOnes; ++i) {
+                for (int i = 1; i <= 2 + 9 * numberOfOnes; ++i) {
                     cout << ' ';
                 }
             }
@@ -123,11 +123,11 @@ void printIt(int hours, int minutes, int seconds, int n) {
         } else if (minutes > 0) { // The hours aren't printed Whitespaces Conditions Beginning (only based on minutes)
             int numberOfOnes = countOfOnes(hours, minutes, seconds);
             if (numberOfOnes == 0) {
-                for (int i = 0; i <= 15; ++i) {
+                for (int i = 1; i <= 15; ++i) {
                     cout << ' ';
                 }
             } else {
-                for (int i = 0; i <= 15 + 9 * numberOfOnes; ++i) {
+                for (int i = 1; i <= 15 + 9 * numberOfOnes; ++i) {
                     cout << ' ';
                 }
             }
@@ -149,11 +149,11 @@ void printIt(int hours, int minutes, int seconds, int n) {
             // Whitespaces Conditions Beginning (only based on seconds)
             int numberOfOnes = countOfOnes(hours, minutes, seconds);
             if (numberOfOnes == 0) {
-                for (int i = 0; i <= 29; ++i) {
+                for (int i = 1; i <= 29; ++i) {
                     cout << ' ';
                 }
             } else {
-                for (int i = 0; i <= 29 + 9 * numberOfOnes; ++i) {
+                for (int i = 1; i <= 29 + 9 * numberOfOnes; ++i) {
                     cout << ' ';
                 }
             }
