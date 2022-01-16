@@ -127,7 +127,7 @@ void printHomeScreenAndMenu(bool InvalidEntry) {
 		colors[i] = 1 + (rand() % 15); // The Elements never get the Value of the Color black, which is 0
 	}
 
-	for (int i = 1; i <= 3; ++i) {
+	for (int i = 1; i <= 4; ++i) {
 		cout << endl;
 	}
 
@@ -150,6 +150,7 @@ void printHomeScreenAndMenu(bool InvalidEntry) {
 
 	// The Menu
 	SetConsoleTextAttribute(h, colorWhite); // Now everything is white
+	cout << endl;
 	cout << endl;
 	cout << endl;
 

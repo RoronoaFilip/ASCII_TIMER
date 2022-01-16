@@ -35,9 +35,7 @@ void printEndScreen(bool invalidEntry) {
 
 	int line = 1;
 	while (line != 12) { // Print 00:00:00 centered
-		for (int i = 0; i <= 2; ++i) {
-			cout << ' ';
-		}
+		cout << ' ' << ' ';
 		printHours(0, line, 1, true, colorRed, colorRed);
 		printMinutes(0, line, colorRed, colorRed);
 		printSeconds(0, line, colorRed, colorRed);

@@ -14,90 +14,92 @@
  */
 #include "other_functions.h"
 #include <iostream>
+
 using namespace std;
 void screenClear() {
-    // Clear the Console
+	// Clear the Console
 #ifdef _WIN32
-    system("cls");
+	system("cls");
 #elif __linux__
-    system("clear");
+	system("clear");
 #else
-    for (int i = 0; i <= 200; ++i) {
-        cout << endl;
-    }
+	for (int i = 0; i <= 200; ++i) {
+		cout << endl;
+	}
 #endif
 }
 int tensOfNumberCount(const int n) {
-    // Return the Count of Tens is the number
-    int count = 1;
-    for (int i = n; i > 0; i /= 10) {
-        count *= 10;
-    }
-    count /= 10;
-    return count;
+	// Return the Count of Tens is the number
+	int count = 1;
+	for (int i = n; i > 0; i /= 10) {
+		count *= 10;
+	}
+	count /= 10;
+	return count;
 }
-int *transformHoursMinutesSeconds(int n) {
-    // Transforming the Input
-    int *timeArr = new int[3];
-    timeArr[0] = 0; // Hours
-    timeArr[1] = 0; // Minutes
-    timeArr[2] = 0; // Seconds
-    if (n < 60) {
-        timeArr[2] = n;
-    } else {
-        for (int i = n; i > 0; i -= 60) {
-            if (n >= 60) {
-                ++timeArr[1];
-            }
-            n -= 60;
-            if (timeArr[1] == 60) {
-                timeArr[1] = 0;
-                ++timeArr[0];
-            }
-        }
-        if (n != 0) {
-            timeArr[2] = 60 + n;
-        }
-    }
-    return timeArr;
+int* transformHoursMinutesSeconds(int n) {
+	// Transforming the Input
+	int* timeArr = new int[3];
+	timeArr[0] = 0; // Hours
+	timeArr[1] = 0; // Minutes
+	timeArr[2] = 0; // Seconds
+	if (n < 60) {
+		timeArr[2] = n;
+	}
+	else {
+		for (int i = n; i > 0; i -= 60) {
+			if (n >= 60) {
+				++timeArr[1];
+			}
+			n -= 60;
+			if (timeArr[1] == 60) {
+				timeArr[1] = 0;
+				++timeArr[0];
+			}
+		}
+		if (n != 0) {
+			timeArr[2] = 60 + n;
+		}
+	}
+	return timeArr;
 }
 bool isInputCorrect(string input) {
-    // Validate the Input
-    for (int i = 0; input[i] != '\0'; ++i) {
-        if (input[i] < '0' || input[i] > '9') {
-            return false;
-        }
-    }
+	// Validate the Input
+	for (int i = 0; input[i] != '\0'; ++i) {
+		if (input[i] < '0' || input[i] > '9') {
+			return false;
+		}
+	}
 
-    return true;
+	return true;
 }
 int getNumber(string input) {
-    // Transform string to integer
-    int number = 0;
-    for (int i = 0; input[i] != '\0'; ++i) {
-        number = number * 10 + (input[i] - '0');
-    }
-    return number;
+	// Transform string to integer
+	int number = 0;
+	for (int i = 0; input[i] != '\0'; ++i) {
+		number = number * 10 + (input[i] - '0');
+	}
+	return number;
 }
 int countOfOnes(int hours, int minutes, int seconds) {
-    int count = 0;
-    while (hours > 0) {
-        if (hours % 10 == 1) {
-            ++count;
-        }
-        hours /= 10;
-    }
-    while (minutes > 0) {
-        if (minutes % 10 == 1) {
-            ++count;
-        }
-        minutes /= 10;
-    }
-    while (seconds > 0) {
-        if (seconds % 10 == 1) {
-            ++count;
-        }
-        seconds /= 10;
-    }
-    return count;
+	int count = 0;
+	while (hours > 0) {
+		if (hours % 10 == 1) {
+			++count;
+		}
+		hours /= 10;
+	}
+	while (minutes > 0) {
+		if (minutes % 10 == 1) {
+			++count;
+		}
+		minutes /= 10;
+	}
+	while (seconds > 0) {
+		if (seconds % 10 == 1) {
+			++count;
+		}
+		seconds /= 10;
+	}
+	return count;
 }
