@@ -1,6 +1,6 @@
 # ITP-Praktikum-Project
 >**Project for Introduction to Programming from FMI Semester 1**  
->Link to the Docs Document [here](https://docs.google.com/document/d/1TLs8k6gelVqKmfflBVkEZJ2nadfqpIbJqB-dmi3oNEw/edit)  
+>Link to the Docs Document [here](https://github.com/RoronoaFilip/ITP-Praktikum-Project/blob/workflow/09-Project%20_ASCII%20timer_%202021.docx)  
 
 <h1 align = "center">
   СУ „Св. Климент Охридски“, ФМИ 
@@ -34,12 +34,59 @@
 ## Пример: 
 #### **Визуализацията на таймера може да изглежда така:**  
 
-hh/mm/ss - hours : minutes : seconds  
+* hh/mm/ss - hours : minutes : seconds  
 ![Image for Hours:Minutes:Seconds](/ReadMeImages/HoursMinutesSeconds.png)
 
-mm/ss - minutes : seconds  
+* mm/ss - minutes : seconds  
 ![Image for Minutes:Seconds](/ReadMeImages/MinutesSeconds.png)
 
-only seconds  
-![Image for Seconds](/ReadMeImages/Seconds.png)
+* only seconds  
+![Image for Seconds](/ReadMeImages/Seconds.png)  
 
+#  
+
+## The Way the Timer works:  
+* Each Digit has a specific Pattern, which is saved via Functions in print_number.cpp.
+* Each Digit get's printed based on that Pattern and the Line the Printing is on.(A Loop for the Number of the Line)  
+* The Functions get the Line Number and that Line from the Pattern get's printed.  
+* It works even if the Hours are more than 100 but the Timer isn't centered as the Instructions specify.
+## Used Libraries:
+* iostream - Input, Output
+* Windows.h - Coloring, Sleep
+* string - Entry Validation
+* ctime - Reset rand()  
+
+## Valid Inputs:  
+* 1000000000
+* 1000000
+* 100000
+* 10000
+* 1000
+* 100
+
+## Invalid Inputs:
+* If the Input has atleast 1 Character other than a Number  
+
+## Used Tests:  
+> ##### ***These Inputs are Invalid, but it's easier to read***
+* 3 600 000| -> 1000 Hours (Transform to 3 Digit Hours) Centering Test  
+* 360 000--|--> 100 Hours (Transform to 2 Digit Hours) Centering Test
+* 36 000---|--> 10 Hours (Transform to single Digit Hours) Centering Test
+* 3 600----|---> 1 Hours (Transform to minutes) Centering Test
+* 600------|--> 10 Minutes
+* 60-------|----> 1 Minute
+##
+* 72 000---|--> 20 Hours (Transform to 10<=hours<=19) Centering Test
+* 43 200---|--> 12 Hours (Transform to 11 hours) Centering Test
+* 39 600---|--> 11 Hours (Transform to 10 hours) Centering Test
+##
+* 900------|--> 15 Minutes (Color Yellow)
+* 720------|--> 12 Minutes (Transform to 11 Minutes) Centering Test
+* 660------|--> 11 Minutes (Transform to 10 Minutes) Centering Test
+* 600------|--> 10 Minutes (Transform to single Digit Minutes) Centering Test
+* 60-------|--> 1 Minute (Color Red)
+##
+* 20 -> 20 Seconds Centering Test
+* 11 -> 11 Seconds Centering Test
+* 1<=Input<=10 -> Blinking
+##

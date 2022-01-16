@@ -232,4 +232,6 @@ _Pvt_Extensions
 .fake/
 /src/WebApi/logs
 
-ASCII_TIMER/ASCII_Timer_CODE/.vscode/settings.json
+*.json
+*.vscode
+*tempCodeRunnerFile.cpp

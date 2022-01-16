@@ -29,15 +29,8 @@ void printOnlySeconds(int seconds) {
 	while (line <= 11) {
 		// Centering Whitespaces
 		int numberOfOnes = countOfOnes(0, 0, seconds);
-		if (numberOfOnes == 0) {
-			for (int i = 0; i <= 29; ++i) {
-				cout << ' ';
-			}
-		}
-		else {
-			for (int i = 0; i <= 29 + 9 * numberOfOnes; ++i) {
-				cout << ' ';
-			}
+		for (int i = 1; i <= 29 + (9 / 2 * numberOfOnes); ++i) {
+			cout << ' ';
 		}
 
 		printSeconds(seconds, line, colorRed, colorRed); // Send for Print
@@ -54,7 +47,7 @@ void lessThan10Sec(int seconds, int n) {
 
 		printOnlySeconds(seconds); // The Printing itself
 
-		for (int i = 1; i <= 5; ++i) {
+		for (int i = 1; i <= 7; ++i) {
 			cout << endl;
 		}
 
@@ -68,7 +61,7 @@ void lessThan10Sec(int seconds, int n) {
 
 		printOnlySeconds(seconds); // The Printing itself
 
-		for (int i = 1; i <= 5; ++i) {
+		for (int i = 1; i <= 7; ++i) {
 			cout << endl;
 		}
 
@@ -108,16 +101,12 @@ void printIt(int hours, int minutes, int seconds, int n) {
 			if (hours >= 100) {
 				cout << "  ";
 			}
-			else if (numberOfOnes == 0) {
-				for (int i = 0; i <= 2; ++i) {
-					cout << ' ';
-				}
-			}
 			else {
-				for (int i = 0; i <= 2 + 9 * numberOfOnes; ++i) {
+				for (int i = 1; i <= 2 + (9 / 2 * numberOfOnes); ++i) {
 					cout << ' ';
 				}
 			}
+
 			// Whitespaces Conditions End
 
 			printHours(hours, line, hoursNumberCount, (hours < 10), colors[0], colors[1]);
@@ -126,43 +115,27 @@ void printIt(int hours, int minutes, int seconds, int n) {
 		}
 		else if (minutes > 0) { // The hours aren't printed Whitespaces Conditions Beginning (only based on minutes)
 			int numberOfOnes = countOfOnes(hours, minutes, seconds);
-			if (numberOfOnes == 0) {
-				for (int i = 0; i <= 15; ++i) {
-					cout << ' ';
-				}
+			for (int i = 1; i <= 15 + (9 / 2 * numberOfOnes); ++i) {
+				cout << ' ';
 			}
-			else {
-				for (int i = 0; i <= 15 + 9 * numberOfOnes; ++i) {
-					cout << ' ';
-				}
-			}
+
 			// Whitespaces Conditions Beginning
 
-			if ((minutes < 15) || (minutes == 15 && seconds == 0)) { // All the numbers are colored in yellow
+			if (minutes < 15) { // All the numbers are colored in yellow
 				colors[2] = colors[3] = colors[4] = colors[5] = colorYellow;
-			}
-			if ((minutes == 1) && (seconds == 0)) { // All the numbers are colored in red
-				colors[2] = colors[3] = colors[4] = colors[5] = colorRed;
 			}
 
 			printMinutes(minutes, line, colors[2], colors[3]);
 			printSeconds(seconds, line, colors[4], colors[5]);
 		}
 		else if (seconds > 0) { // All the numbers are colored in red
-			if (seconds <= 10) {  // Passed onto another Function
+			if (seconds < 10) {  // Passed onto another Function
 				lessThan10Sec(seconds, n);
 			}
 			// Whitespaces Conditions Beginning (only based on seconds)
 			int numberOfOnes = countOfOnes(hours, minutes, seconds);
-			if (numberOfOnes == 0) {
-				for (int i = 0; i <= 29; ++i) {
-					cout << ' ';
-				}
-			}
-			else {
-				for (int i = 0; i <= 29 + 9 * numberOfOnes; ++i) {
-					cout << ' ';
-				}
+			for (int i = 1; i <= 29 + (9 / 2 * numberOfOnes); ++i) {
+				cout << ' ';
 			}
 			// Whitespaces Conditions End
 
@@ -175,7 +148,7 @@ void printIt(int hours, int minutes, int seconds, int n) {
 }
 void printTimer(int hours, int minutes, int seconds, int n) {
 	while (n >= 0) {
-		if (n > 10) {
+		if (n >= 10) {
 			for (int i = 1; i <= 7; ++i) { // Centering the Timer
 				cout << endl;
 			}
@@ -183,7 +156,7 @@ void printTimer(int hours, int minutes, int seconds, int n) {
 
 		printIt(hours, minutes, seconds, n); // The Printing itself
 
-		for (int i = 1; i <= 4; ++i) {
+		for (int i = 1; i <= 7; ++i) {
 			cout << endl;
 		}
 
