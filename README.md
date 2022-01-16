@@ -53,7 +53,8 @@
 ## Used Libraries:
 * iostream - Input, Output
 * Windows.h - Coloring, Sleep
-* string - Entry Validation  
+* string - Entry Validation
+* ctime - Reset rand()  
 
 ## Valid Inputs:  
 * 1000000000
