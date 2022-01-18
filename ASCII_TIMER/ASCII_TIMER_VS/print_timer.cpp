@@ -172,7 +172,10 @@ void printTimer(int hours, int minutes, int seconds, int n) {
 			--hours;
 		}
 
-		Sleep(1000); // Second
+		Sleep(900); // Second
 		screenClear();
 	}
 }
+// When Sleep(1000) - Behind with 4 Min 45 Sec after 1 Hour
+// When Sleep(900) - Ahead with 1 Min 30 Sec after 1 Hour
+// When Sleep(870) - Ahead with 1 Min 10 Sec after 1 Hour
