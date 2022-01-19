@@ -16,6 +16,6 @@
 #include "home_screen.h"
 
 int main() {
-	homeScreen(); // Print the Home Screen
-	return 0;
+    homeScreen(); // Print the Home Screen
+    return 0;
 }
