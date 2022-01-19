@@ -94,7 +94,7 @@ void printIt(int hours, int minutes, int seconds, int n) {
     int line = 1;
     while (line <= 11) {
         if (hours > 0) {
-            // Whitespaces Conditions Beginning (only based on hours)
+            // Whitespaces Conditions Beginning
             int numberOfOnes = countOfOnes(hours, minutes, seconds);
             if (hours >= 100) {
                 cout << "  ";
@@ -108,13 +108,14 @@ void printIt(int hours, int minutes, int seconds, int n) {
             printHours(hours, line, hoursNumberCount, (hours < 10), colors[0], colors[1]);
             printMinutes(minutes, line, colors[2], colors[3]);
             printSeconds(seconds, line, colors[4], colors[5]);
-        } else if (minutes > 0) { // The hours aren't printed Whitespaces Conditions Beginning (only based on minutes)
+        } else if (minutes > 0) { // The hours aren't printed
             int numberOfOnes = countOfOnes(hours, minutes, seconds);
+
+            // Whitespaces Conditions Beginning
             for (int i = 1; i <= 15 + (9 / 2 * numberOfOnes); ++i) {
                 cout << ' ';
             }
-
-            // Whitespaces Conditions Beginning
+            // Whitespaces Conditions End
 
             if (minutes < 15) { // All the numbers are colored in yellow
                 colors[2] = colors[3] = colors[4] = colors[5] = colorYellow;
@@ -126,7 +127,8 @@ void printIt(int hours, int minutes, int seconds, int n) {
             if (seconds < 10) {   // Passed onto another Function
                 lessThan10Sec(seconds, n);
             }
-            // Whitespaces Conditions Beginning (only based on seconds)
+
+            // Whitespaces Conditions Beginning
             int numberOfOnes = countOfOnes(hours, minutes, seconds);
             for (int i = 1; i <= 29 + (9 / 2 * numberOfOnes); ++i) {
                 cout << ' ';
