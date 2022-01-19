@@ -21,8 +21,8 @@ using namespace std;
 void screenClear();
 int tensOfNumberCount(int n);
 int* transformHoursMinutesSeconds(int n);
-bool isInputCorrect(string input);
-int getNumber(string input);
+bool isInputCorrect(char input[]);
+int getNumber(char input[]);
 int countOfOnes(int hours, int minutes, int seconds);
 
 #endif

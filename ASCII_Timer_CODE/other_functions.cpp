@@ -63,7 +63,7 @@ int* transformHoursMinutesSeconds(int n) {
 	}
 	return timeArr;
 }
-bool isInputCorrect(string input) {
+bool isInputCorrect(char input[]) {
 	// Validate the Input
 	for (int i = 0; input[i] != '\0'; ++i) {
 		if (input[i] < '0' || input[i] > '9') {
@@ -73,7 +73,7 @@ bool isInputCorrect(string input) {
 
 	return true;
 }
-int getNumber(string input) {
+int getNumber(char input[]) {
 	// Transform string to integer
 	int number = 0;
 	for (int i = 0; input[i] != '\0'; ++i) {
