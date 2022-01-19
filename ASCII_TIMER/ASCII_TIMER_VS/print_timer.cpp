@@ -15,16 +15,17 @@
  */
 #include "end_screen.h"
 #include "other_functions.h"
-#include "print_hours.h"
-#include "print_minutes.h"
-#include "print_seconds.h"
+#include "send_time_for_print.h"
 #include <Windows.h>
 #include <ctime>
 #include <iostream>
 using namespace std;
+
+const int colorYellow = 14; // Value of the Color Yellow
+const int colorRed = 12;    // Value of the Color Red
+
 void printOnlySeconds(int seconds) {
-	// The Equivelent of printIt()
-	const int colorRed = 12;
+	// The same as printIt()
 	int line = 1;
 	while (line <= 11) {
 		// Centering Whitespaces
@@ -80,13 +81,12 @@ void lessThan10Sec(int seconds, int n) {
 	}
 }
 void printIt(int hours, int minutes, int seconds, int n) {
-	const int colorYellow = 14; // Value of the Color Yellow
-	const int colorRed = 12;    // Value of the Color Red
+
 
 	const int SIZE = 6;
 	int colors[SIZE] = {}; // Array for random Colors
 
-	srand(time(0));
+	srand(time(NULL));
 	for (int i = 0; i < 6; ++i) {
 		colors[i] += 1 + (rand() % 15); // Never get the Value of black, which is 0
 	}
@@ -106,7 +106,6 @@ void printIt(int hours, int minutes, int seconds, int n) {
 					cout << ' ';
 				}
 			}
-
 			// Whitespaces Conditions End
 
 			printHours(hours, line, hoursNumberCount, (hours < 10), colors[0], colors[1]);
@@ -118,7 +117,6 @@ void printIt(int hours, int minutes, int seconds, int n) {
 			for (int i = 1; i <= 15 + (9 / 2 * numberOfOnes); ++i) {
 				cout << ' ';
 			}
-
 			// Whitespaces Conditions Beginning
 
 			if (minutes < 15) { // All the numbers are colored in yellow
@@ -172,7 +170,7 @@ void printTimer(int hours, int minutes, int seconds, int n) {
 			--hours;
 		}
 
-		Sleep(900); // Second
+		Sleep(1000); // Second
 		screenClear();
 	}
 }

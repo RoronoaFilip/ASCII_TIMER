@@ -18,11 +18,13 @@
 #include <Windows.h>
 #include <ctime>
 #include <iostream>
-#include <string>
 using namespace std;
+
+const int colorWhite = 15;
+const HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+
 void printT(int line, int color) {
 	// Pattern of 'T'
-	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(h, color);
 	switch (line) {
 	case 1:
@@ -34,13 +36,11 @@ void printT(int line, int color) {
 }
 void printI(int color) {
 	// Pattern of 'I'
-	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(h, color);
 	cout << "I  ";
 }
 void printM(int line, int color) {
 	// Pattern of 'M'
-	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(h, color);
 	switch (line) {
 	case 1:
@@ -65,7 +65,6 @@ void printM(int line, int color) {
 }
 void printE(int line, int color) {
 	// Pattern of 'E'
-	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(h, color);
 	switch (line) {
 	case 1:
@@ -80,7 +79,6 @@ void printE(int line, int color) {
 }
 void printR(int line, int color) {
 	// Pattern of 'R'
-	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(h, color);
 	switch (line) {
 	case 1:
@@ -116,13 +114,11 @@ void printR(int line, int color) {
 }
 void printHomeScreenAndMenu(bool InvalidEntry) {
 	// Printing the Home Screen and Menu
-	const int colorWhite = 15;
-	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 
 	const int colorSize = 5;
 	int colors[colorSize] = {}; // Array for random Colors
 
-	srand(time(nullptr));
+	srand(time(NULL));
 	for (int i = 0; i < colorSize; ++i) {
 		colors[i] = 1 + (rand() % 15); // The Elements never get the Value of the Color black, which is 0
 	}
@@ -137,6 +133,7 @@ void printHomeScreenAndMenu(bool InvalidEntry) {
 		for (int i = 1; i <= 16; ++i) {
 			cout << ' ';
 		}
+
 		// Each Letter is colored randomly
 		printT(line, colors[0]);
 		printI(colors[1]);
@@ -196,14 +193,14 @@ void printHomeScreenAndMenu(bool InvalidEntry) {
 	}
 }
 void homeScreen(bool InvalidEntry = false) {
+	screenClear();
+
 	printHomeScreenAndMenu(InvalidEntry); // Print "Text" and the Menu
 
-	const int colorWhite = 15;
-	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(h, colorWhite);
 
-	string input; // A String to determine if the Input is valid
-	getline(cin, input);
+	char input[100]; // A String to determine if the Input is valid
+	cin.getline(input, 101);
 
 	if (!isInputCorrect(input)) { // Home Screen is printed with Invalid Entry Text
 		screenClear();
