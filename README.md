@@ -68,7 +68,6 @@
 
 ## Used Tests:  
 > ##### ***These Inputs are Invalid, but it's easier to read***
-* 3 600 000| -> 1000 Hours (Transform to 3 Digit Hours) Centering Test  
 * 360 000--|--> 100 Hours (Transform to 2 Digit Hours) Centering Test
 * 36 000---|--> 10 Hours (Transform to single Digit Hours) Centering Test
 * 3 600----|---> 1 Hours (Transform to minutes) Centering Test
