@@ -23,6 +23,7 @@ using namespace std;
 
 void printEndScreen(bool invalidEntry) {
 	// Printing the End Screen
+
 	const int colorWhite = 15;
 	const int colorRed = 12;
 	const HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -80,7 +81,8 @@ void endScreen(bool invalidEntry) {
 
 	if (!isInputCorrect(input)) { // Print the End Screen with an Invalid Entry Text
 		screenClear();
-		endScreen(true);
+		invalidEntry = true;
+		endScreen(invalidEntry);
 	}
 
 	int num = getNumber(input); // Transform string to integer
@@ -95,6 +97,7 @@ void endScreen(bool invalidEntry) {
 	}
 	else {
 		screenClear();
-		endScreen(true); // Print the End Screen with an Invalid Entry Text
+		invalidEntry = true;
+		endScreen(invalidEntry); // Print the End Screen with an Invalid Entry Text
 	}
 }

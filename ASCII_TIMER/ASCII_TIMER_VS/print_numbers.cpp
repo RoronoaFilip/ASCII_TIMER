@@ -40,7 +40,6 @@ void print0(int num, int lineNumber, bool isItTheSecondDigit) {
 		cout << "0        0  ";
 		if (isItTheSecondDigit) {
 			SetConsoleTextAttribute(h, colorWhite);
-			SetConsoleTextAttribute(h, colorWhite);
 			cout << "#  ";
 		}
 		break;

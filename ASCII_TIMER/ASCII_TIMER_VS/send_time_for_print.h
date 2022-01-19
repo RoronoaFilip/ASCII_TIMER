@@ -13,11 +13,11 @@
  *
  */
 #pragma once
-#ifndef TIME_H
-#define TIME_H
+#ifndef SEND_TIME_FOR_PRINT_H
+#define SEND_TIME_FOR_PRINT_H
 
 void printHours(int hours, int lineNumber, int tensOfNumberCount, bool isHoursLessThanTen, int color1, int color2);
 void printMinutes(const int minutes, const int lineNumber, const int color1, const int color2);
-void printSeconds(const int seconds, const int lineNumber, int color1, int color2);
+void printSeconds(const int seconds, const int lineNumber, const int color1, const int color2);
 
 #endif

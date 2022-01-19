@@ -143,7 +143,7 @@ void printMinutes(const int minutes, const int lineNumber, const int color1, con
 		break;
 	}
 }
-void printSeconds(const int seconds, const int lineNumber, int color1, int color2) {
+void printSeconds(const int seconds, const int lineNumber, const int color1, const int color2) {
 	bool isItTheSecondDigit = false;
 
 	SetConsoleTextAttribute(h, color1);

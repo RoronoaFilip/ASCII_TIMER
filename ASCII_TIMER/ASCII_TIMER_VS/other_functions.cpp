@@ -18,15 +18,12 @@
 using namespace std;
 void screenClear() {
 	// Clear the Console
-#ifdef _WIN32
-	system("cls");
-#elif __linux__
-	system("clear");
-#else
-	for (int i = 0; i <= 200; ++i) {
-		cout << endl;
-	}
-#endif
+
+	cout << "\033[;H"; // Moves Cursor to the top left
+	cout << "\033[J"; // Clears the console
+
+	 //system("cls"); // Alternative
+	// system("clear"); // Alternative
 }
 int tensOfNumberCount(const int n) {
 	// Return the Count of Tens is the number
@@ -39,10 +36,12 @@ int tensOfNumberCount(const int n) {
 }
 int* transformHoursMinutesSeconds(int n) {
 	// Transforming the Input
+
 	int* timeArr = new int[3];
 	timeArr[0] = 0; // Hours
 	timeArr[1] = 0; // Minutes
 	timeArr[2] = 0; // Seconds
+
 	if (n < 60) {
 		timeArr[2] = n;
 	}
@@ -61,6 +60,7 @@ int* transformHoursMinutesSeconds(int n) {
 			timeArr[2] = 60 + n;
 		}
 	}
+
 	return timeArr;
 }
 bool isInputCorrect(char input[]) {

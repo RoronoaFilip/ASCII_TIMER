@@ -26,15 +26,20 @@ const int colorRed = 12;    // Value of the Color Red
 
 void printOnlySeconds(int seconds) {
 	// The same as printIt()
+
+	int hours = 0; // The Hours are already 0
+	int minutes = 0; // The Minutes are already 0
+
 	int line = 1;
 	while (line <= 11) {
 		// Centering Whitespaces
-		int numberOfOnes = countOfOnes(0, 0, seconds);
+		int numberOfOnes = countOfOnes(hours, minutes, seconds);
 		for (int i = 1; i <= 29 + (9 / 2 * numberOfOnes); ++i) {
 			cout << ' ';
 		}
 
 		printSeconds(seconds, line, colorRed, colorRed); // Send for Print
+
 		++line;
 		cout << endl;
 	}
@@ -48,7 +53,7 @@ void lessThan10Sec(int seconds, int n) {
 
 		printOnlySeconds(seconds); // The Printing itself
 
-		for (int i = 1; i <= 7; ++i) {
+		for (int i = 2; i <= 7; ++i) {
 			cout << endl;
 		}
 
@@ -62,7 +67,7 @@ void lessThan10Sec(int seconds, int n) {
 
 		printOnlySeconds(seconds); // The Printing itself
 
-		for (int i = 1; i <= 7; ++i) {
+		for (int i = 2; i <= 7; ++i) {
 			cout << endl;
 		}
 
@@ -81,7 +86,6 @@ void lessThan10Sec(int seconds, int n) {
 	}
 }
 void printIt(int hours, int minutes, int seconds, int n) {
-
 
 	const int SIZE = 6;
 	int colors[SIZE] = {}; // Array for random Colors
@@ -158,7 +162,7 @@ void printTimer(int hours, int minutes, int seconds, int n) {
 
 		printIt(hours, minutes, seconds, n); // The Printing itself
 
-		for (int i = 1; i <= 7; ++i) {
+		for (int i = 2; i <= 7; ++i) {
 			cout << endl;
 		}
 

@@ -18,6 +18,7 @@
 #include <Windows.h>
 #include <ctime>
 #include <iostream>
+
 using namespace std;
 
 const int colorWhite = 15;
@@ -204,7 +205,8 @@ void homeScreen(bool InvalidEntry = false) {
 
 	if (!isInputCorrect(input)) { // Home Screen is printed with Invalid Entry Text
 		screenClear();
-		homeScreen(true);
+		InvalidEntry = true;
+		homeScreen(InvalidEntry);
 	}
 
 	int n = getNumber(input); // Transform string to integer
