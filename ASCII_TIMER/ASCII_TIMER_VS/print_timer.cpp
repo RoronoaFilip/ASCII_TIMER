@@ -95,7 +95,7 @@ void printIt(int hours, int minutes, int seconds, int n) {
 		colors[i] += 1 + (rand() % 15); // Never get the Value of black, which is 0
 	}
 
-	int hoursNumberCount = tensOfNumberCount(hours);
+	int hoursNumberCount = tensOfNumberCount(hours); // Number of tens (Tens, Hundreds, Thousands)
 
 	int line = 1;
 	while (line <= 11) {
@@ -118,13 +118,14 @@ void printIt(int hours, int minutes, int seconds, int n) {
 			printSeconds(seconds, line, colors[4], colors[5]);
 		}
 		else if (minutes > 0) { // The hours aren't printed
+
 			int numberOfOnes = countOfOnes(hours, minutes, seconds);
 
 			// Whitespaces Conditions Beginning
 			for (int i = 1; i <= 15 + (9 / 2 * numberOfOnes); ++i) {
 				cout << ' ';
 			}
-			// Whitespaces Conditions Beginning
+			// Whitespaces Conditions End
 
 			if (minutes < 15) { // All the numbers are colored in yellow
 				colors[2] = colors[3] = colors[4] = colors[5] = colorYellow;
@@ -134,6 +135,7 @@ void printIt(int hours, int minutes, int seconds, int n) {
 			printSeconds(seconds, line, colors[4], colors[5]);
 		}
 		else if (seconds > 0) { // All the numbers are colored in red
+
 			if (seconds < 10) {  // Passed onto another Function
 				lessThan10Sec(seconds, n);
 			}
@@ -169,11 +171,11 @@ void printTimer(int hours, int minutes, int seconds, int n) {
 		--seconds;
 		--n;
 
-		if (seconds == -1) {
+		if (seconds == -1) { // Reset Seconds
 			seconds = 59;
 			--minutes;
 		}
-		if (minutes == -1) {
+		if (minutes == -1) { // Reset Minutes
 			minutes = 59;
 			--hours;
 		}
@@ -181,7 +183,7 @@ void printTimer(int hours, int minutes, int seconds, int n) {
 		Sleep(1000); // Second
 		screenClear();
 	}
+	// When Sleep(1000) - Behind with 4 Min 45 Sec after 1 Hour
+   // When Sleep(900) - Ahead with 1 Min 30 Sec after 1 Hour
+  // When Sleep(870) - Ahead with 1 Min 10 Sec after 1 Hour
 }
-// When Sleep(1000) - Behind with 4 Min 45 Sec after 1 Hour
-// When Sleep(900) - Ahead with 1 Min 30 Sec after 1 Hour
-// When Sleep(870) - Ahead with 1 Min 10 Sec after 1 Hour

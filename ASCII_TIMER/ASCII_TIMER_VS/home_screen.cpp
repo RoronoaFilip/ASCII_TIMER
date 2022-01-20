@@ -22,11 +22,13 @@
 using namespace std;
 
 const int colorWhite = 15;
-const HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+const HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE); // For Coloring
 
 void printT(int line, int color) {
 	// Pattern of 'T'
-	SetConsoleTextAttribute(h, color);
+
+	SetConsoleTextAttribute(h, color); // Color Output
+
 	switch (line) {
 	case 1:
 		cout << "TTTTTTTTTTT  ";
@@ -37,12 +39,16 @@ void printT(int line, int color) {
 }
 void printI(int color) {
 	// Pattern of 'I'
-	SetConsoleTextAttribute(h, color);
+
+	SetConsoleTextAttribute(h, color); // Color Output
+
 	cout << "I  ";
 }
 void printM(int line, int color) {
 	// Pattern of 'M'
-	SetConsoleTextAttribute(h, color);
+
+	SetConsoleTextAttribute(h, color); // Color Output
+
 	switch (line) {
 	case 1:
 		cout << "M         M  ";
@@ -66,7 +72,9 @@ void printM(int line, int color) {
 }
 void printE(int line, int color) {
 	// Pattern of 'E'
-	SetConsoleTextAttribute(h, color);
+
+	SetConsoleTextAttribute(h, color); // Color Output
+
 	switch (line) {
 	case 1:
 	case 6:
@@ -80,7 +88,9 @@ void printE(int line, int color) {
 }
 void printR(int line, int color) {
 	// Pattern of 'R'
-	SetConsoleTextAttribute(h, color);
+
+	SetConsoleTextAttribute(h, color); // Color Output
+
 	switch (line) {
 	case 1:
 		cout << "RRRR";
@@ -198,7 +208,7 @@ void homeScreen(bool InvalidEntry = false) {
 
 	printHomeScreenAndMenu(InvalidEntry); // Print "Text" and the Menu
 
-	SetConsoleTextAttribute(h, colorWhite);
+	SetConsoleTextAttribute(h, colorWhite); // Color Output white
 
 	char input[100]; // A String to determine if the Input is valid
 	cin.getline(input, 101);
