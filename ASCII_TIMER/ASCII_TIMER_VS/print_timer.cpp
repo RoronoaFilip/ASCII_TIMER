@@ -19,6 +19,7 @@
 #include <Windows.h>
 #include <ctime>
 #include <iostream>
+#include "print_timer.h"
 
 using namespace std;
 
@@ -42,7 +43,7 @@ void printOnlySeconds(int seconds) {
 		cout << endl;
 	}
 }
-void lessThan10Sec(int seconds, int n) {
+void lessThan10Sec(int seconds, int& n) {
 	// Less than 10 Seconds because of Blinking
 	while (n >= 0) {
 		for (int i = 1; i <= 7; ++i) { // Centering
@@ -79,11 +80,11 @@ void lessThan10Sec(int seconds, int n) {
 		if (n == 0) {     // Timer is 0
 			cout << '\a'; // Sound
 			screenClear();
-			endScreen(); // Print the End Screen
+			return;
 		}
 	}
 }
-void printIt(int hours, int minutes, int seconds, int n) {
+void printIt(int hours, int minutes, int seconds, int& n) {
 
 	const int SIZE = 6;
 	int colors[SIZE] = {}; // Array for random Colors
@@ -138,6 +139,10 @@ void printIt(int hours, int minutes, int seconds, int n) {
 				lessThan10Sec(seconds, n);
 			}
 
+			if (n == 0) {
+				return;
+			}
+
 			// Whitespaces Conditions Beginning
 			int numberOfOnes = countOfOnes(hours, minutes, seconds);
 			for (int i = 1; i <= 29 + (9 / 2 * numberOfOnes); ++i) {
@@ -152,7 +157,7 @@ void printIt(int hours, int minutes, int seconds, int n) {
 		cout << endl;
 	}
 }
-void printTimer(int hours, int minutes, int seconds, int n) {
+void printTimer(int hours, int minutes, int seconds, int& n) {
 	while (n >= 0) {
 
 		if (n >= 10) {
@@ -162,6 +167,10 @@ void printTimer(int hours, int minutes, int seconds, int n) {
 		}
 
 		printIt(hours, minutes, seconds, n); // The Printing itself
+
+		if (n == 0) {
+			return;
+		}
 
 		for (int i = 2; i <= 7; ++i) {
 			cout << endl;

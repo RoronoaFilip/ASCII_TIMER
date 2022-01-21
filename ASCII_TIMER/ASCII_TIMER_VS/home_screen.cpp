@@ -15,6 +15,7 @@
  */
 #include "other_functions.h"
 #include "print_timer.h"
+#include "end_screen.h"
 #include <Windows.h>
 #include <ctime>
 #include <iostream>
@@ -200,7 +201,7 @@ void printHomeScreenAndMenu(bool InvalidEntry) {
 		cout << "Your Input: ";
 	}
 }
-void homeScreen(bool InvalidEntry = false) {
+int homeScreen(bool InvalidEntry = false) {
 	screenClear();
 
 	printHomeScreenAndMenu(InvalidEntry); // Print "Text" and the Menu
@@ -213,14 +214,14 @@ void homeScreen(bool InvalidEntry = false) {
 	if (!isInputCorrect(input)) { // Home Screen is printed with Invalid Entry Text
 		screenClear();
 		InvalidEntry = true;
-		homeScreen(InvalidEntry);
+		return homeScreen(InvalidEntry);
 	}
 
 	int n = getNumber(input); // Transform string to integer
 
 	if (n == 0) { // Exit Value
 		screenClear();
-		exit(0);
+		return n;
 	}
 
 	screenClear();
@@ -229,6 +230,10 @@ void homeScreen(bool InvalidEntry = false) {
 	int hours = timePtr[0];
 	int minutes = timePtr[1];
 	int seconds = timePtr[2];
+	delete[] timePtr;
 
 	printTimer(hours, minutes, seconds, n);
+
+	int num = endScreen();
+	return num;
 }

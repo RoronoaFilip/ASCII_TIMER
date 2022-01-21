@@ -18,7 +18,6 @@
 #include "send_time_for_print.h"
 #include <Windows.h>
 #include <iostream>
-#include<ctime>
 
 using namespace std;
 
@@ -75,7 +74,7 @@ void printEndScreen(bool invalidEntry) {
 		cout << "Your Entry: ";
 	}
 }
-void endScreen(bool invalidEntry) {
+int endScreen(bool invalidEntry) {
 
 	printEndScreen(invalidEntry); // Print the End Screen
 
@@ -85,22 +84,18 @@ void endScreen(bool invalidEntry) {
 	if (!isInputCorrect(input)) { // Print the End Screen with an Invalid Entry Text
 		screenClear();
 		invalidEntry = true;
-		endScreen(invalidEntry);
+		return endScreen(invalidEntry);
 	}
 
 	int num = getNumber(input); // Transform string to integer
 
-	if (num == 1) {
+	if (num == 1 || num == 0) {
 		screenClear();
-		homeScreen();
-	}
-	else if (num == 0) {
-		screenClear();
-		exit(0);
+		return num;
 	}
 	else {
 		screenClear();
 		invalidEntry = true;
-		endScreen(invalidEntry); // Print the End Screen with an Invalid Entry Text
+		return endScreen(invalidEntry); // Print the End Screen with an Invalid Entry Text
 	}
 }
