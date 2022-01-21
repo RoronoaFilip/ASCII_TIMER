@@ -21,9 +21,6 @@
 
 using namespace std;
 
-const int colorWhite = 15;
-const HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE); // For Coloring
-
 void printT(int line, int color) {
 	// Pattern of 'T'
 
@@ -126,11 +123,11 @@ void printR(int line, int color) {
 void printHomeScreenAndMenu(bool InvalidEntry) {
 	// Printing the Home Screen and Menu
 
-	const int colorSize = 5;
-	int colors[colorSize] = {}; // Array for random Colors
+	const int SIZE = 5;
+	int colors[SIZE] = {}; // Array for random Colors
 
 	srand(time(NULL));
-	for (int i = 0; i < colorSize; ++i) {
+	for (int i = 0; i < SIZE; ++i) {
 		colors[i] = 1 + (rand() % 15); // The Elements never get the Value of the Color black, which is 0
 	}
 
@@ -210,8 +207,8 @@ void homeScreen(bool InvalidEntry = false) {
 
 	SetConsoleTextAttribute(h, colorWhite); // Color Output white
 
-	char input[100]; // A String to determine if the Input is valid
-	cin.getline(input, 101);
+	char input[charSize]; // A String to determine if the Input is valid
+	cin.getline(input, charSize + 1);
 
 	if (!isInputCorrect(input)) { // Home Screen is printed with Invalid Entry Text
 		screenClear();

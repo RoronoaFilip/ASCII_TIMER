@@ -14,9 +14,8 @@
  */
 #include "send_time_for_print.h"
 #include "print_numbers.h"
+#include "other_functions.h"
 #include <Windows.h>
-
-const HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE); // HANDLE used for coloring of the output
 
 void printHours(int hours, int lineNumber, int tensOfNumberCount, bool isHoursLessThanTen, int color1, int color2) {
 	bool isItTheLastDigit = false;
@@ -110,7 +109,7 @@ void printMinutes(const int minutes, const int lineNumber, const int color1, con
 	isItTheSecondDigit = true;
 	SetConsoleTextAttribute(h, color2);
 
-	switch (minutes % 10) { // Send the seconds Digit // Always Print # after it
+	switch (minutes % 10) { // Send the second Digit // Always Print # after it
 	case 0:
 		print0(minutes % 10, lineNumber, isItTheSecondDigit);
 		break;
@@ -183,7 +182,7 @@ void printSeconds(const int seconds, const int lineNumber, const int color1, con
 
 	SetConsoleTextAttribute(h, color2);
 
-	switch (seconds % 10) {
+	switch (seconds % 10) {// Send the second Digit // Never Print # after it
 	case 0:
 		print0(seconds % 10, lineNumber, isItTheSecondDigit);
 		break;

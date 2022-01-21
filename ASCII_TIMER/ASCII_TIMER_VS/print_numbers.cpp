@@ -13,20 +13,20 @@
  * Every number={0,1,2,3,4,5,6,7,8,9} has a different Pattern based on the Line Number
  *
  * What gets printed is:
- * 1. The Number sent from print_hours.cpp, print_minutes.cpp or print_seconds.cpp
+ * 1. The Number sent from send_time_for_print_.cpp
  * 2. Based of the curent Line in the Printing Process
  *
  */
 #include "print_numbers.h"
+#include "other_functions.h"
 #include <Windows.h>
 #include <iostream>
-using namespace std;
 
-const int colorWhite = 15;
-const HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+using namespace std;
 
 void print0(int num, int lineNumber, bool isItTheSecondDigit) {
 	// Pattern of the digit 0
+
 	switch (lineNumber) {
 	case 1:
 	case 11:
@@ -53,12 +53,11 @@ void print0(int num, int lineNumber, bool isItTheSecondDigit) {
 }
 void print1(int num, int lineNumber, bool isItTheSecondDigit) {
 	// Pattern of the digit 1
+
 	cout << "1  ";
 	if ((lineNumber == 4 || lineNumber == 7) && isItTheSecondDigit) {
-		if (isItTheSecondDigit) {
-			SetConsoleTextAttribute(h, colorWhite);
-			cout << "#  ";
-		}
+		SetConsoleTextAttribute(h, colorWhite);
+		cout << "#  ";
 	}
 	else if (isItTheSecondDigit) {
 		cout << "   ";
@@ -66,6 +65,7 @@ void print1(int num, int lineNumber, bool isItTheSecondDigit) {
 }
 void print2(int num, int lineNumber, bool isItTheSecondDigit) {
 	// Pattern of the digit 2
+
 	switch (lineNumber) {
 	case 1:
 	case 6:
@@ -109,6 +109,7 @@ void print2(int num, int lineNumber, bool isItTheSecondDigit) {
 }
 void print3(int num, int lineNumber, bool isItTheSecondDigit) {
 	// Pattern of the digit 3
+
 	switch (lineNumber) {
 	case 1:
 	case 6:
@@ -136,6 +137,7 @@ void print3(int num, int lineNumber, bool isItTheSecondDigit) {
 }
 void print4(int num, int lineNumber, bool isItTheSecondDigit) {
 	// Pattern of the digit 4
+
 	switch (lineNumber) {
 	case 1:
 	case 2:
@@ -176,6 +178,7 @@ void print4(int num, int lineNumber, bool isItTheSecondDigit) {
 }
 void print5(int num, int lineNumber, bool isItTheSecondDigit) {
 	// Pattern of the digit 5
+
 	switch (lineNumber) {
 	case 1:
 	case 6:
@@ -217,6 +220,7 @@ void print5(int num, int lineNumber, bool isItTheSecondDigit) {
 }
 void print6(int num, int lineNumber, bool isItTheSecondDigit) {
 	// Pattern of the digit 6
+
 	switch (lineNumber) {
 	case 1:
 	case 6:
@@ -258,6 +262,7 @@ void print6(int num, int lineNumber, bool isItTheSecondDigit) {
 }
 void print7(int num, int lineNumber, bool isItTheSecondDigit) {
 	// Pattern of the digit 7
+
 	switch (lineNumber) {
 	case 1:
 		cout << "7777777777  ";
@@ -283,6 +288,7 @@ void print7(int num, int lineNumber, bool isItTheSecondDigit) {
 }
 void print8(int num, int lineNumber, bool isItTheSecondDigit) {
 	// Pattern of the digit 8
+
 	switch (lineNumber) {
 	case 1:
 	case 6:
@@ -310,6 +316,7 @@ void print8(int num, int lineNumber, bool isItTheSecondDigit) {
 }
 void print9(int num, int lineNumber, bool isItTheSecondDigit) {
 	// Pattern of the digit 9
+
 	switch (lineNumber) {
 	case 1:
 	case 6:

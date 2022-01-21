@@ -19,10 +19,8 @@
 #include <Windows.h>
 #include <ctime>
 #include <iostream>
-using namespace std;
 
-const int colorYellow = 14; // Value of the Color Yellow
-const int colorRed = 12;    // Value of the Color Red
+using namespace std;
 
 void printOnlySeconds(int seconds) {
 	// The same as printIt()
@@ -91,7 +89,7 @@ void printIt(int hours, int minutes, int seconds, int n) {
 	int colors[SIZE] = {}; // Array for random Colors
 
 	srand(time(NULL));
-	for (int i = 0; i < 6; ++i) {
+	for (int i = 0; i < SIZE; ++i) {
 		colors[i] += 1 + (rand() % 15); // Never get the Value of black, which is 0
 	}
 
@@ -134,7 +132,7 @@ void printIt(int hours, int minutes, int seconds, int n) {
 			printMinutes(minutes, line, colors[2], colors[3]);
 			printSeconds(seconds, line, colors[4], colors[5]);
 		}
-		else if (seconds > 0) { // All the numbers are colored in red
+		else if (seconds > 0) {
 
 			if (seconds < 10) {  // Passed onto another Function
 				lessThan10Sec(seconds, n);
@@ -147,7 +145,7 @@ void printIt(int hours, int minutes, int seconds, int n) {
 			}
 			// Whitespaces Conditions End
 
-			printSeconds(seconds, line, colorRed, colorRed);
+			printSeconds(seconds, line, colorRed, colorRed); // All the numbers are colored in red
 		}
 
 		++line;
@@ -156,6 +154,7 @@ void printIt(int hours, int minutes, int seconds, int n) {
 }
 void printTimer(int hours, int minutes, int seconds, int n) {
 	while (n >= 0) {
+
 		if (n >= 10) {
 			for (int i = 1; i <= 7; ++i) { // Centering the Timer
 				cout << endl;
@@ -184,6 +183,6 @@ void printTimer(int hours, int minutes, int seconds, int n) {
 		screenClear();
 	}
 	// When Sleep(1000) - Behind with 4 Min 45 Sec after 1 Hour
-   // When Sleep(900) - Ahead with 1 Min 30 Sec after 1 Hour
-  // When Sleep(870) - Ahead with 1 Min 10 Sec after 1 Hour
+	// When Sleep(900) - Ahead with 1 Min 30 Sec after 1 Hour
+	// When Sleep(870) - Ahead with 1 Min 10 Sec after 1 Hour
 }
