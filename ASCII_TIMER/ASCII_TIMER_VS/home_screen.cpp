@@ -18,12 +18,14 @@
 #include <Windows.h>
 #include <ctime>
 #include <iostream>
-#include <string>
+
 using namespace std;
+
 void printT(int line, int color) {
 	// Pattern of 'T'
-	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleTextAttribute(h, color);
+
+	SetConsoleTextAttribute(h, color); // Color Output
+
 	switch (line) {
 	case 1:
 		cout << "TTTTTTTTTTT  ";
@@ -34,14 +36,16 @@ void printT(int line, int color) {
 }
 void printI(int color) {
 	// Pattern of 'I'
-	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleTextAttribute(h, color);
+
+	SetConsoleTextAttribute(h, color); // Color Output
+
 	cout << "I  ";
 }
 void printM(int line, int color) {
 	// Pattern of 'M'
-	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleTextAttribute(h, color);
+
+	SetConsoleTextAttribute(h, color); // Color Output
+
 	switch (line) {
 	case 1:
 		cout << "M         M  ";
@@ -65,8 +69,9 @@ void printM(int line, int color) {
 }
 void printE(int line, int color) {
 	// Pattern of 'E'
-	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleTextAttribute(h, color);
+
+	SetConsoleTextAttribute(h, color); // Color Output
+
 	switch (line) {
 	case 1:
 	case 6:
@@ -80,8 +85,9 @@ void printE(int line, int color) {
 }
 void printR(int line, int color) {
 	// Pattern of 'R'
-	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleTextAttribute(h, color);
+
+	SetConsoleTextAttribute(h, color); // Color Output
+
 	switch (line) {
 	case 1:
 		cout << "RRRR";
@@ -116,14 +122,12 @@ void printR(int line, int color) {
 }
 void printHomeScreenAndMenu(bool InvalidEntry) {
 	// Printing the Home Screen and Menu
-	const int colorWhite = 15;
-	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 
-	const int colorSize = 5;
-	int colors[colorSize] = {}; // Array for random Colors
+	const int SIZE = 5;
+	int colors[SIZE] = {}; // Array for random Colors
 
-	srand(time(nullptr));
-	for (int i = 0; i < colorSize; ++i) {
+	srand(time(NULL));
+	for (int i = 0; i < SIZE; ++i) {
 		colors[i] = 1 + (rand() % 15); // The Elements never get the Value of the Color black, which is 0
 	}
 
@@ -137,6 +141,7 @@ void printHomeScreenAndMenu(bool InvalidEntry) {
 		for (int i = 1; i <= 16; ++i) {
 			cout << ' ';
 		}
+
 		// Each Letter is colored randomly
 		printT(line, colors[0]);
 		printI(colors[1]);
@@ -196,18 +201,19 @@ void printHomeScreenAndMenu(bool InvalidEntry) {
 	}
 }
 void homeScreen(bool InvalidEntry = false) {
+	screenClear();
+
 	printHomeScreenAndMenu(InvalidEntry); // Print "Text" and the Menu
 
-	const int colorWhite = 15;
-	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleTextAttribute(h, colorWhite);
+	SetConsoleTextAttribute(h, colorWhite); // Color Output white
 
-	string input; // A String to determine if the Input is valid
-	getline(cin, input);
+	char input[charSize]; // A String to determine if the Input is valid
+	cin.getline(input, charSize + 1);
 
 	if (!isInputCorrect(input)) { // Home Screen is printed with Invalid Entry Text
 		screenClear();
-		homeScreen(true);
+		InvalidEntry = true;
+		homeScreen(InvalidEntry);
 	}
 
 	int n = getNumber(input); // Transform string to integer

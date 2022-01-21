@@ -24,15 +24,6 @@
     <ClCompile Include="print_numbers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="print_hours.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="print_minutes.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="print_seconds.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="home_screen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -40,6 +31,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="print_timer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="send_time_for_print.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,15 +44,6 @@
     <ClInclude Include="print_numbers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="print_hours.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="print_minutes.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="print_seconds.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="home_screen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -66,6 +51,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="print_timer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="send_time_for_print.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

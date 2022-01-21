@@ -15,25 +15,29 @@
  */
 #include "end_screen.h"
 #include "other_functions.h"
-#include "print_hours.h"
-#include "print_minutes.h"
-#include "print_seconds.h"
+#include "send_time_for_print.h"
 #include <Windows.h>
 #include <ctime>
 #include <iostream>
+
 using namespace std;
+
 void printOnlySeconds(int seconds) {
-	// The Equivelent of printIt()
-	const int colorRed = 12;
+	// The same as printIt()
+
+	int hours = 0; // The Hours are already 0
+	int minutes = 0; // The Minutes are already 0
+
 	int line = 1;
 	while (line <= 11) {
 		// Centering Whitespaces
-		int numberOfOnes = countOfOnes(0, 0, seconds);
+		int numberOfOnes = countOfOnes(hours, minutes, seconds);
 		for (int i = 1; i <= 29 + (9 / 2 * numberOfOnes); ++i) {
 			cout << ' ';
 		}
 
 		printSeconds(seconds, line, colorRed, colorRed); // Send for Print
+
 		++line;
 		cout << endl;
 	}
@@ -47,7 +51,7 @@ void lessThan10Sec(int seconds, int n) {
 
 		printOnlySeconds(seconds); // The Printing itself
 
-		for (int i = 1; i <= 7; ++i) {
+		for (int i = 2; i <= 7; ++i) {
 			cout << endl;
 		}
 
@@ -61,7 +65,7 @@ void lessThan10Sec(int seconds, int n) {
 
 		printOnlySeconds(seconds); // The Printing itself
 
-		for (int i = 1; i <= 7; ++i) {
+		for (int i = 2; i <= 7; ++i) {
 			cout << endl;
 		}
 
@@ -80,24 +84,23 @@ void lessThan10Sec(int seconds, int n) {
 	}
 }
 void printIt(int hours, int minutes, int seconds, int n) {
-	const int colorYellow = 14; // Value of the Color Yellow
-	const int colorRed = 12;    // Value of the Color Red
 
 	const int SIZE = 6;
 	int colors[SIZE] = {}; // Array for random Colors
 
-	srand(time(0));
-	for (int i = 0; i < 6; ++i) {
+	srand(time(NULL));
+	for (int i = 0; i < SIZE; ++i) {
 		colors[i] += 1 + (rand() % 15); // Never get the Value of black, which is 0
 	}
 
-	int hoursNumberCount = tensOfNumberCount(hours);
+	int hoursNumberCount = tensOfNumberCount(hours); // Number of tens (Tens, Hundreds, Thousands)
 
 	int line = 1;
 	while (line <= 11) {
 		if (hours > 0) {
-			// Whitespaces Conditions Beginning (only based on hours)
 			int numberOfOnes = countOfOnes(hours, minutes, seconds);
+
+			// Whitespaces Conditions Beginning
 			if (hours >= 100) {
 				cout << "  ";
 			}
@@ -106,20 +109,21 @@ void printIt(int hours, int minutes, int seconds, int n) {
 					cout << ' ';
 				}
 			}
-
 			// Whitespaces Conditions End
 
 			printHours(hours, line, hoursNumberCount, (hours < 10), colors[0], colors[1]);
 			printMinutes(minutes, line, colors[2], colors[3]);
 			printSeconds(seconds, line, colors[4], colors[5]);
 		}
-		else if (minutes > 0) { // The hours aren't printed Whitespaces Conditions Beginning (only based on minutes)
+		else if (minutes > 0) { // The hours aren't printed
+
 			int numberOfOnes = countOfOnes(hours, minutes, seconds);
+
+			// Whitespaces Conditions Beginning
 			for (int i = 1; i <= 15 + (9 / 2 * numberOfOnes); ++i) {
 				cout << ' ';
 			}
-
-			// Whitespaces Conditions Beginning
+			// Whitespaces Conditions End
 
 			if (minutes < 15) { // All the numbers are colored in yellow
 				colors[2] = colors[3] = colors[4] = colors[5] = colorYellow;
@@ -128,18 +132,20 @@ void printIt(int hours, int minutes, int seconds, int n) {
 			printMinutes(minutes, line, colors[2], colors[3]);
 			printSeconds(seconds, line, colors[4], colors[5]);
 		}
-		else if (seconds > 0) { // All the numbers are colored in red
+		else if (seconds > 0) {
+
 			if (seconds < 10) {  // Passed onto another Function
 				lessThan10Sec(seconds, n);
 			}
-			// Whitespaces Conditions Beginning (only based on seconds)
+
+			// Whitespaces Conditions Beginning
 			int numberOfOnes = countOfOnes(hours, minutes, seconds);
 			for (int i = 1; i <= 29 + (9 / 2 * numberOfOnes); ++i) {
 				cout << ' ';
 			}
 			// Whitespaces Conditions End
 
-			printSeconds(seconds, line, colorRed, colorRed);
+			printSeconds(seconds, line, colorRed, colorRed); // All the numbers are colored in red
 		}
 
 		++line;
@@ -148,6 +154,7 @@ void printIt(int hours, int minutes, int seconds, int n) {
 }
 void printTimer(int hours, int minutes, int seconds, int n) {
 	while (n >= 0) {
+
 		if (n >= 10) {
 			for (int i = 1; i <= 7; ++i) { // Centering the Timer
 				cout << endl;
@@ -156,18 +163,18 @@ void printTimer(int hours, int minutes, int seconds, int n) {
 
 		printIt(hours, minutes, seconds, n); // The Printing itself
 
-		for (int i = 1; i <= 7; ++i) {
+		for (int i = 2; i <= 7; ++i) {
 			cout << endl;
 		}
 
 		--seconds;
 		--n;
 
-		if (seconds == -1) {
+		if (seconds == -1) { // Reset Seconds
 			seconds = 59;
 			--minutes;
 		}
-		if (minutes == -1) {
+		if (minutes == -1) { // Reset Minutes
 			minutes = 59;
 			--hours;
 		}
@@ -175,4 +182,7 @@ void printTimer(int hours, int minutes, int seconds, int n) {
 		Sleep(1000); // Second
 		screenClear();
 	}
+	// When Sleep(1000) - Behind with 4 Min 45 Sec after 1 Hour
+	// When Sleep(900) - Ahead with 1 Min 30 Sec after 1 Hour
+	// When Sleep(870) - Ahead with 1 Min 10 Sec after 1 Hour
 }

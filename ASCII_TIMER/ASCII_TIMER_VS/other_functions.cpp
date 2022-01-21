@@ -16,33 +16,37 @@
 #include <iostream>
 
 using namespace std;
+
 void screenClear() {
+
 	// Clear the Console
-#ifdef _WIN32
-	system("cls");
-#elif __linux__
-	system("clear");
-#else
-	for (int i = 0; i <= 200; ++i) {
-		cout << endl;
-	}
-#endif
+
+	cout << "\033[;H"; // Moves Cursor to the top left
+	cout << "\033[J"; // Clears the console
+
+	// cout << "\x1B[2J\x1B[H"; // Alternative 
+	//system("cls"); // Alternative
+	// system("clear"); // Alternative
 }
 int tensOfNumberCount(const int n) {
 	// Return the Count of Tens is the number
+
 	int count = 1;
 	for (int i = n; i > 0; i /= 10) {
 		count *= 10;
 	}
 	count /= 10;
+
 	return count;
 }
 int* transformHoursMinutesSeconds(int n) {
 	// Transforming the Input
+
 	int* timeArr = new int[3];
 	timeArr[0] = 0; // Hours
 	timeArr[1] = 0; // Minutes
 	timeArr[2] = 0; // Seconds
+
 	if (n < 60) {
 		timeArr[2] = n;
 	}
@@ -61,10 +65,12 @@ int* transformHoursMinutesSeconds(int n) {
 			timeArr[2] = 60 + n;
 		}
 	}
+
 	return timeArr;
 }
-bool isInputCorrect(string input) {
+bool isInputCorrect(char* input) {
 	// Validate the Input
+
 	for (int i = 0; input[i] != '\0'; ++i) {
 		if (input[i] < '0' || input[i] > '9') {
 			return false;
@@ -73,15 +79,19 @@ bool isInputCorrect(string input) {
 
 	return true;
 }
-int getNumber(string input) {
+int getNumber(char* input) {
 	// Transform string to integer
+
 	int number = 0;
 	for (int i = 0; input[i] != '\0'; ++i) {
 		number = number * 10 + (input[i] - '0');
 	}
+
 	return number;
 }
 int countOfOnes(int hours, int minutes, int seconds) {
+	// Get the Count of Ones
+
 	int count = 0;
 	while (hours > 0) {
 		if (hours % 10 == 1) {
@@ -101,5 +111,6 @@ int countOfOnes(int hours, int minutes, int seconds) {
 		}
 		seconds /= 10;
 	}
+
 	return count;
 }

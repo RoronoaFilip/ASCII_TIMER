@@ -15,33 +15,35 @@
 #include "end_screen.h"
 #include "home_screen.h"
 #include "other_functions.h"
-#include "print_hours.h"
-#include "print_minutes.h"
-#include "print_seconds.h"
+#include "send_time_for_print.h"
 #include <Windows.h>
 #include <iostream>
-#include <string>
+#include<ctime>
+
 using namespace std;
 
 void printEndScreen(bool invalidEntry) {
 	// Printing the End Screen
-	const int colorWhite = 15;
-	const int colorRed = 12;
-	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 
 	for (int i = 1; i <= 7; ++i) {
 		cout << endl;
 	}
 
+	int hours = 0; // The Hours are already 0
+	int minutes = 0; // The Minutes are already 0
+	int seconds = 0; // The Seconds are already 0
+
+
 	int line = 1;
-	while (line != 12) { // Print 00:00:00 centered
+	while (line != 12) { // Print 00:00:00 centered in red
 		cout << ' ' << ' ';
-		printHours(0, line, 1, true, colorRed, colorRed);
-		printMinutes(0, line, colorRed, colorRed);
-		printSeconds(0, line, colorRed, colorRed);
+		printHours(hours, line, 1, (hours < 10), colorRed, colorRed);
+		printMinutes(minutes, line, colorRed, colorRed);
+		printSeconds(seconds, line, colorRed, colorRed);
 		++line;
 		cout << endl;
 	}
+
 	cout << endl;
 
 	SetConsoleTextAttribute(h, colorWhite);
@@ -77,15 +79,17 @@ void endScreen(bool invalidEntry) {
 
 	printEndScreen(invalidEntry); // Print the End Screen
 
-	string input; // A String to determine if the Input is valid
-	getline(cin, input);
+	char input[charSize]; // A String to determine if the Input is valid
+	cin.getline(input, charSize + 1);
 
 	if (!isInputCorrect(input)) { // Print the End Screen with an Invalid Entry Text
 		screenClear();
-		endScreen(true);
+		invalidEntry = true;
+		endScreen(invalidEntry);
 	}
 
 	int num = getNumber(input); // Transform string to integer
+
 	if (num == 1) {
 		screenClear();
 		homeScreen();
@@ -96,6 +100,7 @@ void endScreen(bool invalidEntry) {
 	}
 	else {
 		screenClear();
-		endScreen(true); // Print the End Screen with an Invalid Entry Text
+		invalidEntry = true;
+		endScreen(invalidEntry); // Print the End Screen with an Invalid Entry Text
 	}
 }
