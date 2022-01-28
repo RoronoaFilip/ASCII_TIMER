@@ -232,6 +232,11 @@ _Pvt_Extensions
 .fake/
 /src/WebApi/logs
 
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.sln
+
 *.json
 *.vscode
 *tempCodeRunnerFile.cpp
