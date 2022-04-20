@@ -13,7 +13,7 @@
  * The Home Screen gets printed
  *
  */
-#include "../Headers/home_screen.h"
+#include "../.h/home_screen.h"
 
 int main() {
 

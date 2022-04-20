@@ -12,7 +12,7 @@
  * File with all Functions that don't fit anywhere else
  *
  */
-#include "../Headers/other_functions.h"
+#include "../.h/other_functions.h"
 #include <iostream>
 
 using namespace std;

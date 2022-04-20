@@ -17,8 +17,8 @@
  * 2. Based of the curent Line in the Printing Process
  *
  */
-#include "../Headers/print_numbers.h"
-#include "../Headers/other_functions.h"
+#include "../.h/print_numbers.h"
+#include "../.h/other_functions.h"
 #include <Windows.h>
 #include <iostream>
 

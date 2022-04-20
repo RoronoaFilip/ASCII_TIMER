@@ -12,10 +12,10 @@
  * File with all Functions for the End Screen
  *
  */
-#include "../Headers/end_screen.h"
-#include "../Headers/home_screen.h"
-#include "../Headers/other_functions.h"
-#include "../Headers/send_time_for_print.h"
+#include "../.h/end_screen.h"
+#include "../.h/home_screen.h"
+#include "../.h/other_functions.h"
+#include "../.h/send_time_for_print.h"
 #include <Windows.h>
 #include <iostream>
 

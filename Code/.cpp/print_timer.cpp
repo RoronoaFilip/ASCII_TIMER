@@ -13,13 +13,13 @@
  * (Centering | Sending for Print | What gets sent for Print)
  *
  */
-#include "../Headers/end_screen.h"
-#include "../Headers/other_functions.h"
-#include "../Headers/send_time_for_print.h"
+#include "../.h/end_screen.h"
+#include "../.h/other_functions.h"
+#include "../.h/send_time_for_print.h"
 #include <Windows.h>
 #include <ctime>
 #include <iostream>
-#include "../Headers/print_timer.h"
+#include "../.h/print_timer.h"
 
 using namespace std;
 

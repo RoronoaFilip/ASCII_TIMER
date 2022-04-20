@@ -12,9 +12,9 @@
  * File with a Functions that send for Printing the Digits of the Hours, Minutes and Seconds
  *
  */
-#include "../Headers/send_time_for_print.h"
-#include "../Headers/print_numbers.h"
-#include "../Headers/other_functions.h"
+#include "../.h/send_time_for_print.h"
+#include "../.h/print_numbers.h"
+#include "../.h/other_functions.h"
 #include <Windows.h>
 
 void printHours(int hours, int lineNumber, int tensOfNumberCount, bool isHoursLessThanTen, int color1, int color2) {

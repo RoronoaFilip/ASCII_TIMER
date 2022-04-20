@@ -13,9 +13,9 @@
  *
  *
  */
-#include "../Headers/other_functions.h"
-#include "../Headers/print_timer.h"
-#include "../Headers/end_screen.h"
+#include "../.h/other_functions.h"
+#include "../.h/print_timer.h"
+#include "../.h/end_screen.h"
 #include <Windows.h>
 #include <ctime>
 #include <iostream>
