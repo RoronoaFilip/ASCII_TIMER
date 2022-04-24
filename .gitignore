@@ -232,11 +232,22 @@ _Pvt_Extensions
 .fake/
 /src/WebApi/logs
 
+# Visual Studio Files
 *.vcxproj
 *.vcxproj.filters
 *.vcxproj.user
 *.sln
 
+# VS Code Files
 *.json
 *.vscode
 *tempCodeRunnerFile.cpp
+
+# CLion Files
+*.idea
+*cmake-build-debug
+*CMakeLists.txt
+
+# Other Files
+*.exe
+*.zip
